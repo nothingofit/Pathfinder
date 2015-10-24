@@ -1,82 +1,9 @@
-<html ng-app="friends_app">
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Full Mean Demo="support tag from-rainbow"></title>
-  <!-- require angular -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script>
-        var friends_app = angular.module('friends_app', []);
-
-        friends_app.factory('FriendFactory', function($http) {
-            var factory = {};
-            var friends = [];
-            factory.getFriends = function(callback) {
-                $http.get('/friends').success(function(output) {
-                    friends = output;
-                    callback(friends);
-                })
-            }
-            // note the use of callbacks!
-            factory.addFriend = function(info, callback) {
-                $http.post('/add', info).success(function(data) {
-                    callback(data);
-                })
-            }
-            factory.deleteFriend = function(friend) {
-                console.log("FRIEND TO DELTE: ", friend._id);
-                $http.post('/delete/' +friend._id, friend).success(function() {
-
-
-                })
-            }
-
-
-            return factory;
-        });
-
-        friends_app.controller('FriendsController', function($scope, FriendFactory) {
-            $scope.friends = [];
-            FriendFactory.getFriends(function(data) {
-                $scope.friends = data;
-                  // anything else that you want to happen after you getFriends needs to be inside of this callback
-            });
-            $scope.addfriend = function() {
-                // note the use of callbacks here
-                FriendFactory.addFriend($scope.new_friend, function(data) {
-                    console.log("data: ", data);
-                    FriendFactory.getFriends(function(data) {
-                        $scope.friends = data;
-                    });
-
-                });
-                // $scope.friends.push($scope.new_friend);
-                $scope.new_friend = {};
-            }
-            $scope.deleteFriend = function(friend) {
-                FriendFactory.deleteFriend(friend);
-                FriendFactory.getFriends(function(data) {
-                        $scope.friends = data;
-                    });
-            }
-        })
-    </script>
+    <title></title>
 </head>
-<!-- everything in the body is going to use the friends controller (this gives us access to the friends controller $scope) -->
-<body ng-controller="FriendsController">
-    <h1>Friends</h1>
-    <input type="text" ng-model="filter_name" placeholder="filter">
-    {{filter_name}}
-    <ul>
-    <!-- here is where we are going to display friends -->
-    <li ng-repeat="friend in friends | filter: filter_name">
-      {{friend.name}}, {{friend.age}} ,
-      <button ng-click="deleteFriend(friend)">Delete</button>
-    </li>
-    </ul>
-    <h1>Add a Friend</h1>
-    <!-- objects and properties nothing scary -->
-    <input type="text" ng-model="new_friend.name" placeholder="name">
-    <input type="number" ng-model="new_friend.age" placeholder="age">
-    <!-- addfriend() is a method we are going to make in the angular controller -->
-    <input type="submit" ng-click="addfriend()">
+<body>
+<h1>HI</h1>
 </body>
 </html>
