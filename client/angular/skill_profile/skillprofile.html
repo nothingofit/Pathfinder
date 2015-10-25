@@ -17,23 +17,21 @@
             <h3 class="text-center">Resources</h3>
             <div>
                 <p class="text-center" ng-bind="'Books on ' + skill"></p>
-                <div id="scrollbar-book-list">
-                    <ul>
-                        <li class="book-info">Learning AngularJS <p>Dayley, Brad</p></li>
-                        <li class="book-info">Node.JS AngularJS <p>Dayley, Brad</p></li>
-                        <li class="book-info">Learning AngularJS <p>Dayley, Brad</p></li>
-                        <li class="book-info">Testing AngularJS <p>Blah, Brad</p></li>
-                        <li class="book-info">Testing AngularJS <p>Blah, Brad</p></li>
-                        <li class="book-info">Testing AngularJS <p>Blah, Brad</p></li>
+                <div ng-bind="relevantBooksString"></div>
+                <div class="">
+                    <ul class="list-group">
+                        <a ng-href="#" ng-repeat="book in relevantBooks" class="list-group-item">
+                            <strong ng-bind="book.title + ' (' + book.year + ')'"></strong> - <span ng-bind="book.author"></span>
+                        </a>
                     </ul>
                 </div>
             </div>
             <div id="courses-recommendation" class="text-center">
                 <h3>Courses Recommended</h3>
                 <ul>
-                    <li class="courses-link"><a href="#">AngularJS</a> - CodeAcademy</li>
-                    <li class="courses-link"><a href="#">Learn AngularJS</a> - Udemy</li>
-                    <li class="courses-link"><a href="#">AngularJS</a> - CodeAcademy</li>
+                    <li class="courses-link"><a href="#">JavaScript</a> - CodeAcademy</li>
+                    <li class="courses-link"><a href="#">Learn JavaScript</a> - Udemy</li>
+                    <li class="courses-link"><a href="#">Eloquent JavaScript</a> - http://eloquentjavascript.net/</li>
                 </ul>
                 <p>Know of a good course?<a href="#"> Suggest it here!</a></p>
             </div>

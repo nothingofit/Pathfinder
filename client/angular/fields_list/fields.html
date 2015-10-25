@@ -2,7 +2,7 @@
     <div class="container">
         <ul>
             <li><button class="btn btn-warning">Logout</button></li>
-            <li><button class="btn btn-warning">Your Profile</button></li>
+            <li><a href="#/users/1" class="btn btn-warning">Your Profile</a></li>
         </ul>
     </div>
 </nav>
@@ -11,39 +11,45 @@
     <div class="row">
         <div class="col-sm-12 col-lg-12 text-center">
             <h1>Select Your Field(s)</h1>
-            <div ng-bind="shownFields"></div>
+            <br>
+            <!-- <div ng-bind="shownFields"></div> -->
+            <h4>Selected Fields:</h4>
+            <ul>
+                <li style="display: inline-block; margin-left: 10px" ng-repeat="field in selectedFields" ng-bind="'- ' + field"></li>
+            </ul>
+            <br>
         </div>
         <div id="field-options" class="row text-center">
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <li ng-click="addSelectedField('biology')" class="list-group-item">Biology</li>
-                    <li ng-click="addSelectedField('chemistry')" class="list-group-item">Chemistry</li>
-                    <li class="list-group-item">Physics</li>
-                    <li class="list-group-item">Engineering</li>
+                    <li ng-click="addSelectedField('Web Development')" class="list-group-item">Web Development</li>
+                    <li ng-click="addSelectedField('Programming')" class="list-group-item">Programming</li>
+                    <li ng-click="addSelectedField('Physics')" class="list-group-item">Physics</li>
+                    <li ng-click="addSelectedField('Engineering')" class="list-group-item">Engineering</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <li class="list-group-item">Health Services</li>
-                    <li class="list-group-item">Medical Technology</li>
-                    <li class="list-group-item">Accounting</li>
-                    <li class="list-group-item">Business Management</li>
+                    <li ng-click="addSelectedField('Health Services')" class="list-group-item">Health Services</li>
+                    <li ng-click="addSelectedField('Medical Technical')" class="list-group-item">Medical Technology</li>
+                    <li ng-click="addSelectedField('Accounting')" class="list-group-item">Accounting</li>
+                    <li ng-click="addSelectedField('Business Management')" class="list-group-item">Business Management</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <li class="list-group-item">Education</li>
-                    <li class="list-group-item">Food Services</li>
-                    <li class="list-group-item">Sports Management</li>
-                    <li class="list-group-item">Higher Education</li>
+                    <li ng-click="addSelectedField('Education')" class="list-group-item">Education</li>
+                    <li ng-click="addSelectedField('Food Services')" class="list-group-item">Food Services</li>
+                    <li ng-click="addSelectedField('Sports Management')" class="list-group-item">Sports Management</li>
+                    <li ng-click="addSelectedField('Higher Education')" class="list-group-item">Higher Education</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <li class="list-group-item">Research</li>
-                    <li class="list-group-item">Computer Science</li>
-                    <li class="list-group-item">Web Development</li>
-                    <li class="list-group-item">Stage Management</li>
+                    <li ng-click="addSelectedField('Research')" class="list-group-item">Research</li>
+                    <li ng-click="addSelectedField('Computer Science')" class="list-group-item">Computer Science</li>
+                    <li ng-click="addSelectedField('Biology')" class="list-group-item">Biology</li>
+                    <li ng-click="addSelectedField('Stage Management')" class="list-group-item">Stage Management</li>
                 </ul>
             </div>
         </div>
