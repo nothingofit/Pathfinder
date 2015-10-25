@@ -1,13 +1,13 @@
 #choose-navbar {
     padding: 20px;
 }
-    #choose-navbar ul{
-        text-align: right;
-        list-style-type: none;
-    }
-    #choose-navbar li {
-        display: inline-block;
-    }
+#choose-navbar ul{
+    text-align: right;
+    list-style-type: none;
+}
+#choose-navbar li {
+    display: inline-block;
+}
 #chosen-fields {
     padding: 10px;
     background-color: #FF9933;

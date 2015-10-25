@@ -1,24 +1,24 @@
 #view-navbar {
     padding: 20px;
 }
-    #view-navbar ul{
-        text-align: right;
-        list-style-type: none;
-    }
-    #view-navbar li {
-        display: inline-block;
-    }
+#view-navbar ul{
+    text-align: right;
+    list-style-type: none;
+}
+#view-navbar li {
+    display: inline-block;
+}
 #view-listings {
    padding: 20px;
    margin-bottom: 5%;
 }
-    #view-listings a{
-        font-size: 1.4em;
-        margin-top: 10px;
-        padding: 10px 60px 60px 60px;
-        background-color: #99E6FF;
-        border-radius: 10%;
-    }
+#view-listings a{
+    font-size: 1.4em;
+    margin-top: 10px;
+    padding: 10px 60px 60px 60px;
+    background-color: #99E6FF;
+    border-radius: 10%;
+}
 #view-listings .job-link:hover {
     background-color: white;
 }
