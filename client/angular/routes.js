@@ -22,6 +22,9 @@ app.config( function ($routeProvider) {
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'
     })
+    .when('/loginSuccess', {
+      templateUrl: '/partials/success.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
