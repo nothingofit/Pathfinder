@@ -10,6 +10,9 @@ app.config( function ($routeProvider) {
     .when('/choose', {
       templateUrl: '/partials/choose.html'
     })
+    .when('/view', {
+      templateUrl: '/partials/view.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
