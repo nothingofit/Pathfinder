@@ -4,11 +4,11 @@ app.controller("fieldsListController", function($scope, $location){
   $scope.shownFields = "";
 
   function refreshShownFields() {
-    $scope.shownFields = "";
+    var shownFieldsTemp = "";
     for(var i = 0; i < selectedFields.length; i++) {
-      $scope.shownFields += selectedFields[i]+'&';
+      shownFieldsTemp += selectedFields[i]+'&';
     }
-    $scope.shownFields = $scope.shownFields.substring(0, $scope.shownFields.length - 1);
+    $scope.shownFields = shownFieldsTemp.substring(0, shownFieldsTemp.length - 1);
   }
 
   $scope.addSelectedField = function(field){
@@ -24,7 +24,7 @@ app.controller("fieldsListController", function($scope, $location){
   }
 
   $scope.submitFields = function(){
-    $location.path("/choose/" + $scope.shownFields);
+    $location.path("/careers_list/" + $scope.shownFields);
   }
 
 })

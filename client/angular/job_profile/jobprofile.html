@@ -8,11 +8,11 @@
 </nav>
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Web Developer</h1>
-        <h4 class="text-center">Facebook, Inc.</h4>
+        <h1 class="text-center" ng-bind="career"></h1>
+        <h4 class="text-center" ng-bind="company"></h4>
         <!-- job description -->
         <div id="job-description-info" class="col-sm-6 col-sm-offset-3">
-            <p>klsafjadksfjads;l asldfjkaslkfj sdflkjaslkfjsa lskdfjasklfjs salfdjadkls;jfklajsflkjaflkadjsfldjslafajkssafjadksfjads;l asldfjkaslkfj sdflkjaslkfjsa lskdfjasklfjs salfdjadkls;jfklajsflkjaflkadjsfldjslasafjadksfjads;l asldfjkaslkfj sdflkjaslkfjsa lskdfjasklfjs salfdjadkls;jfklajsflkjaflkadjsfldjslasafjadksfjads;l asldfjkaslkfj sdflkjaslkfjsa lskdfjasklfjs salfdjadkls;jfklajsflkjaflkadjsfldjsla</p>
+            <p>Facebook likes front-end developers who like dogs and puppies and flowers and lots of fun igloos Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
             <div class="job-info-specs">
                 <h3><strong>Requirements</strong></h3>
                 <ul>
@@ -21,10 +21,19 @@
             </div>
             <div class="job-info-specs">
                 <h3><strong>Skills</strong></h3>
-                <ul>
-                    <li><a>JavaScript</a></li>
-                    <li><a>ReactJS</a></li>
-                    <li><a>SASS</a></li>
+                <ul class="list-group checked-list-box">
+                    <a ng-href="#/skills/JavaScript" class="list-group-item">
+                        <span class="glyphicon glyphicon-check"></span>
+                        JavaScript
+                    </a>
+                    <a ng-href="#/skills/ReactJS" class="list-group-item">
+                        <span class="glyphicon glyphicon-check"></span>
+                        ReactJS
+                    </a>
+                    <a ng-href="#/skills/SASS" class="list-group-item">
+                        <span class=""></span>
+                        SASS
+                    </a>
                 </ul>
             </div>
             <div class="job-info-specs">
