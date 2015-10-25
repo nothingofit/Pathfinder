@@ -1,10 +1,13 @@
 {
-  "name": "Sample_Express",
-  "description": "Sample Express Application to test out using Package.json to install dependencies",
+  "name": "pathFinder",
+  "description": "HackingEDU hackathon project",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "connect-flash": "^0.1.1",
     "express": "~4.10.0",
-    "mongoose": "^4.1.1"
-
+    "express-session": "^1.11.3",
+    "mongoose": "^4.1.1",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0"
   }
 }
