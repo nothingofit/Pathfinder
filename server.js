@@ -14,14 +14,16 @@ app.use(expressSession({secret: "Coding Dojo N"}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser(function(user, done) {
-	done(null, user_id);
-});
-passport.deserializeUser(function(id, done){
-	User.findById(id, function(err, user){
-		done(err, user);
-	})
-})
+
+
+// passport.serializeUser(function(user, done) {
+// 	done(null, user_id);
+// });
+// passport.deserializeUser(function(id, done){
+// 	User.findById(id, function(err, user){
+// 		done(err, user);
+// 	})
+// })
 
 require('./config/mongoose.js'); //this always comes before routes!
 require('./config/routes.js')(app);
