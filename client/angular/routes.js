@@ -22,6 +22,9 @@ app.config( function ($routeProvider) {
     .when('/skillprofile', {
       templateUrl: '/angular/skill_profile/skillprofile.html'
     })
+    .when('/companyprofile', {
+      templateUrl: '/angular/company_profile/companyprofile.html'
+    })
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'
     })
