@@ -10,21 +10,11 @@ cpsConn.debug = true;
 module.exports = function(app) {
 	app.post('/user/find', function(req, res){
 
-		String.prototype.hashCode = function() {
-		  var hash = 0, i, chr, len;
-		  if (this.length == 0) return hash;
-		  for (i = 0, len = this.length; i < len; i++) {
-		    chr   = this.charCodeAt(i);
-		    hash  = ((hash << 5) - hash) + chr;
-		    hash |= 0; // Convert to 32bit integer
-		  }
-		  return hash;
-		};
-
 		console.log(req.body)
 		// Insert
 		var obj = {
 		   id: req.body.username,
+		   company: req.body.company,
 		   name: req.body.name,
 		   password: req.body.password,
 		   date: new Date()
@@ -38,5 +28,25 @@ module.exports = function(app) {
 			   res.json(req.body);
 		   }
 		});
+	})
+	app.post('/user/findOne', function(req, res){
+
+		console.log(req.body);
+		var query = cps.Term(req.body.username, "id");
+		var docs = 1;
+		var searchRequest = new cps.SearchRequest(query, docs);
+
+		cpsConn.sendRequest(searchRequest, function (err, searchResponse) {
+		  if (err) {
+			  console.log(err);
+			  res.json({"error": "Error from db"});
+		  } else {
+			  console.log(searchResponse);
+			  console.log("^ search response");
+			  res.end();
+		  }
+
+		});
+
 	})
 }

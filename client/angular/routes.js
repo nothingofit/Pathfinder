@@ -51,6 +51,14 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/create_company/createcompany.html',
       controller: 'createCompanyController'
     })
+    .when('/companyRegister', {
+        templateUrl: '/angular/companyRegister/companyRegister.html',
+        controller: 'companyRegisterController'
+    })
+    .when('/companyLogin', {
+        templateUrl: '/angular/companyLogin/companyLogin.html',
+        controller: 'companyLoginController'
+    })
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'
     })
