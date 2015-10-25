@@ -1,0 +1,26 @@
+#userprofile-navbar {
+    padding: 20px;
+}
+    #userprofile-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #userprofile-navbar li {
+        display: inline-block;
+    }
+#user-contacts li{
+    list-style-type: none;
+}
+#profile-specs {
+    margin-right: 10%;
+    border: 1px solid silver;
+    margin-left: 10%;
+}
+#profile-specs div{
+    padding: 0;
+
+}
+div.profile-components {
+    border: 1px solid silver;
+    padding-left: 30px;
+}
