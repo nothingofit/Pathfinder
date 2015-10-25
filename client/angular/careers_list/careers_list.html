@@ -7,10 +7,15 @@
   </div>
 </nav>
 <div class="container">
+    <center>
+        <h1>Career Matches</h1>
+    </center>
+    <br>
     <div class="row">
         <div id="chosen-fields" class="col-sm-12 col-lg-2">
-            <ul>
-                <li ng-repeat="field in fields"><h4 ng-bind="field | uppercase"></h4></li>
+            <h3>Selected Fields:</h3>
+            <ul class="list-group">
+                <li ng-repeat="field in fields" class="list-group-item"><h4 ng-bind="field | uppercase"></h4></li>
             </ul>
         </div>
         <div id="position-options" class="col-sm-12 col-lg-10 text-center">
@@ -26,57 +31,64 @@
                         <a ng-href="#/skills/HTML" class="list-group-item">
                         <span class="glyphicon glyphicon-check"></span>HTML</a>
                         <a ng-href="#/skills/SASS" class="list-group-item"><span class=""></span>SASS</a>
-                        <a ng-href="#/skills/AngularJS" class="list-group-item"><span class=""></span>AngularJS</a>
+                        <a ng-href="#/skills/AngularJS" class="list-group-item"><span class="glyphicon glyphicon-check"></span> AngularJS</a>
                     </ul>
                     <button class="btn btn-warning" ng-click="viewPosition('Front-End Developer')">View Positions</button>
                 </div>
                 <div class="position-div col-sm-6 col-lg-4">
-                    <h2>Front-End Developer</h2>
+                    <h2>Back-End Developer</h2>
                     <h4>Most Popular Skills:</h4>
                     <ul class="list-group checked-list-box">
-                        <a class="list-group-item">Biology</a>
-                        <a class="list-group-item">Chemistry</a>
-                        <a class="list-group-item">Physics</a>
-                        <a class="list-group-item">Engineering</a>
+                        <a ng-href="#/skills/NodeJS" class="list-group-item"><span class="glyphicon glyphicon-check"></span> NodeJS</a>
+                        <a ng-href="#/skills/Ruby on Rails" class="list-group-item"><span class="glyphicon glyphicon-check"></span> Ruby on Rails</a>
+                        <a ng-href="#/skills/MySQLi" class="list-group-item">MySQLi</a>
+                        <a ng-href="#/skills/PHP" class="list-group-item">PHP</a>
                     </ul>
+                    <button class="btn btn-warning" ng-click="viewPosition('Back-End Developer')">View Positions</button>
                 </div>
                 <div class="position-div col-sm-6 col-lg-4">
-                    <h2>Front-End Developer</h2>
+                    <h2>Data Scientist</h2>
                     <h4>Most Popular Skills:</h4>
                     <ul class="list-group checked-list-box">
-                        <a class="list-group-item">Biology</a>
-                        <a class="list-group-item">Chemistry</a>
-                        <a class="list-group-item">Physics</a>
-                        <a class="list-group-item">Engineering</a>
+                        <a ng-href="#/skills/Algorithms" class="list-group-item"><span class="glyphicon glyphicon-check"></span> Algorithms</a>
+                        <a ng-href="#/skills/SPSS" class="list-group-item">SPSS</a>
+                        <a ng-href="#/skills/C++" class="list-group-item">C++</a>
+                        <a ng-href="#/skills/Scala" class="list-group-item"><span class="glyphicon glyphicon-check"></span> Scala</a>
                     </ul>
+                    <button class="btn btn-warning" ng-click="viewPosition('Data Scientist')">View Positions</button>
                 </div>
                 <div class="position-div col-sm-6 col-lg-4">
-                    <h2>Front-End Developer</h2>
+                    <h2>Database Engineer</h2>
                     <h4>Most Popular Skills:</h4>
                     <ul class="list-group checked-list-box">
-                        <a class="list-group-item">Biology</a>
-                        <a class="list-group-item">Chemistry</a>
-                        <a class="list-group-item">Physics</a>
-                        <a class="list-group-item">Engineering</a>
+                        <a ng-href="#/skills/MySQLi" class="list-group-item">MySQLi</a>
+                        <a ng-href="#/skills/MongoDB" class="list-group-item"><span class="glyphicon glyphicon-check"></span> MongoDB</a>
+                        <a ng-href="#/skills/PostgreSQL" class="list-group-item">PostgreSQL</a>
+                        <a ng-href="#/skills/Firebase" class="list-group-item">Firebase</a>
                     </ul>
+                    <button class="btn btn-warning" ng-click="viewPosition('Database Engineer')">View Positions</button>
                 </div>
                 <div class="position-div col-sm-6 col-lg-4">
-                    <h2>Front-End Developer</h2>
+                    <h2>Server Technician</h2>
                     <h4>Most Popular Skills:</h4>
                     <ul class="list-group checked-list-box">
-                        <a class="list-group-item">Biology</a>
-                        <a class="list-group-item">Engineering</a>
+                        <a ng-href="#/skills/Electrical Engineering" class="list-group-item">Electrical Engineering</a>
+                        <a ng-href="#/skills/Hardware" class="list-group-item">Hardware</a>
+                        <a ng-href="#/skills/Data Structures" class="list-group-item"><span class="glyphicon glyphicon-check"></span> Data Structures</a>
+                        <a ng-href="#/skills/Discrete Calculus" class="list-group-item">Discrete Calculus</a>
                     </ul>
+                    <button class="btn btn-warning" ng-click="viewPosition('Server Technician')">View Positions</button>
                 </div>
                 <div class="position-div col-sm-6 col-lg-4">
-                    <h2>Front-End Developer</h2>
+                    <h2>UI Designer</h2>
                     <h4>Most Popular Skills:</h4>
-                    <ul class="list-group checked-list-box">
-                        <a class="list-group-item">Biology</a>
-                        <a class="list-group-item">Chemistry</a>
-                        <a class="list-group-item">Physics</a>
-                        <a class="list-group-item">Engineering</a>
+                    <ul ng-href="#/skills/JavaScript" class="list-group checked-list-box">
+                        <a ng-href="#/skills/HTML" class="list-group-item"><span class="glyphicon glyphicon-check"></span> JavaScript</a>
+                        <a ng-href="#/skills/CSS" class="list-group-item"><span class="glyphicon glyphicon-check"></span> CSS</a>
+                        <a ng-href="#/skills/SCSS" class="list-group-item">SCSS</a>
+                        <a ng-href="#/skills/Twitter Bootstrap" class="list-group-item"><span class="glyphicon glyphicon-check"></span> Twitter Bootstrap</a>
                     </ul>
+                    <button class="btn btn-warning" ng-click="viewPosition('UI Designer')">View Positions</button>
                 </div>
         </div>
     </div>

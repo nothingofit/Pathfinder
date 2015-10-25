@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+	<script>
+window.ts_endpoint_url = "https:\/\/slack.com\/beacon\/timing";
+</script>
+<script>
+window.TSMark = function(mark_label) {
+	if (!window.performance || !window.performance.mark) return;
+	performance.mark(mark_label);
+};
+TSMark('start_load');
+
+
+window.TSMeasureAndBeacon = function(measure_label, start_mark_label) {
+	if (start_mark_label === 'start_nav' && window.performance && window.performance.timing) {
+		TSBeacon(measure_label, (new Date()).getTime() - performance.timing.navigationStart);
+		return;
+	}
+	if (!window.performance || !window.performance.mark || !window.performance.measure) return;
+	performance.mark(start_mark_label + '_end');
+	try {
+		performance.measure(measure_label, start_mark_label, start_mark_label + '_end');
+		TSBeacon(measure_label, performance.getEntriesByName(measure_label)[0].duration);
+	} catch(e) { return; }
+};
+
+
+window.TSBeacon = function(label, value) {
+	var endpoint_url = ts_endpoint_url || 'https://slack.com/beacon/timing';
+	(new Image()).src = endpoint_url + '?data=' + encodeURIComponent(label + ':' + value);
+};
+</script>
+	<noscript><meta http-equiv="refresh" content="0; URL=/files/jenkimm/F0D4XC1QC/chegg-hackingedu-2015-postman.json?nojsmode=1" /></noscript>
+<script type="text/javascript">
+window.load_start_ms = Date.now();
+window.load_log = [];
+window.logLoad = function(k) {
+	var ms = Date.now();
+	var secs = (ms-window.load_start_ms)/1000;
+
+	window.load_log.push({
+		k: k,
+		t: secs
+	})
+	
+	if (window.TS) {
+		TS.log(88, secs+' '+k);
+	}
+}
+if(self!==top)window.document.write("\u003Cstyle>body * {display:none !important;}\u003C\/style>\u003Ca href=\"#\" onclick="+
+"\"top.location.href=window.location.href\" style=\"display:block !important;padding:10px\">Go to Slack.com\u003C\/a>");
+</script>
+
+
+<script type="text/javascript">
+window.callSlackAPIUnauthed = function(method, args, callback) {
+	var url = '/api/'+method+'?t='+Date.now();
+	var req = new XMLHttpRequest();
+	
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) {
+			req.onreadystatechange = null;
+			var obj;
+			
+			if (req.status == 200) {
+				if (req.responseText.indexOf('{') == 0) {
+					try {
+						eval('obj = '+req.responseText);
+					} catch (err) {
+						console.warn('unable to do anything with api rsp');
+					}
+				}
+			}
+			
+			obj = obj || {
+				ok: false	
+			}
+			
+			callback(obj.ok, obj, args);
+		}
+	}
+	
+	req.open('POST', url, 1);
+	req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	var args2 = [];
+	for (i in args) {
+		args2[args2.length] = encodeURIComponent(i)+'='+encodeURIComponent(args[i]);
+	}
+
+	req.send(args2.join('&'));
+}
+</script>
+
+			
+	
+	<script type="text/javascript">
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', "UA-106458-17", 'slack.com');
+				ga('send', 'pageview');
+
+		
+		(function(e,c,b,f,d,g,a){e.SlackBeaconObject=d;
+		e[d]=e[d]||function(){(e[d].q=e[d].q||[]).push([1*new Date(),arguments])};
+		e[d].l=1*new Date();g=c.createElement(b);a=c.getElementsByTagName(b)[0];
+		g.async=1;g.src=f;a.parentNode.insertBefore(g,a)
+		})(window,document,"script","https://slack.global.ssl.fastly.net/dcf8/js/libs/beacon.js","sb");
+		sb('set', 'token', '3307f436963e02d4f9eb85ce5159744c');
+
+					sb('set', 'user_id', "U0D27TRFU");
+							sb('set', 'user_' + "batch", "?");
+							sb('set', 'user_' + "created", "2015-10-22");
+						sb('set', 'name_tag', "codingedu" + '/' + "armand");
+				sb('track', 'pageview');
+
+		function track(a){ga('send','event','web',a);sb('track',a);}
+
+	</script>
+
+
+		<script type='text/javascript'>
+		
+		(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+		for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+		
+
+		mixpanel.init("12d52d8633a5b432975592d13ebd3f34");
+
+		
+			function mixpanel_track(){if(window.mixpanel)mixpanel.track.apply(mixpanel, arguments);}
+			function mixpanel_track_forms(){if(window.mixpanel)mixpanel.track_forms.apply(mixpanel, arguments);}
+			function mixpanel_track_links(){if(window.mixpanel)mixpanel.track_links.apply(mixpanel, arguments);}
+		
+	</script>
+	
+			<meta name="referrer" content="no-referrer">
+			<meta name="superfish" content="nofish">
+	<script type="text/javascript">
+
+
+
+var TS_last_log_date = null;
+var TSMakeLogDate = function() {
+	var date = new Date();
+
+	var y = date.getFullYear();
+	var mo = date.getMonth()+1;
+	var d = date.getDate();
+
+	var time = {
+	  h: date.getHours(),
+	  mi: date.getMinutes(),
+	  s: date.getSeconds(),
+	  ms: date.getMilliseconds()
+	};
+
+	Object.keys(time).map(function(moment, index) {
+		if(time[moment] < 10) {
+			time[moment] = '0' + time[moment];
+		}
+	});
+
+	var str = y + '/' + mo + '/' + d + ' ' + time.h + ':' + time.mi + ':' + time.s + '.' + time.ms;
+	if (TS_last_log_date) {
+		var diff = date-TS_last_log_date;
+		//str+= ' ('+diff+'ms)';
+	}
+	TS_last_log_date = date;
+	return str+' ';
+}
+
+var TSSSB = {
+	env: (function() {
+		var v = {
+			win_ssb_version: null,
+			win_ssb_version_minor: null,
+			mac_ssb_version: null,
+			mac_ssb_version_minor: null,
+			mac_ssb_build: null,
+			lin_ssb_version: null,
+			lin_ssb_version_minor: null
+		}
+		
+		var is_win = (navigator.appVersion.indexOf("Windows") !== -1);
+		var is_lin = (navigator.appVersion.indexOf("Linux") !== -1);
+		var is_mac = !!(navigator.userAgent.match(/(OS X)/g));
+
+		if (navigator.userAgent.match(/(Slack_SSB)/g) || navigator.userAgent.match(/(Slack_WINSSB)/g)) {
+			// Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.55.3 (KHTML, like Gecko) Slack_SSB/0.32
+			var parts = navigator.userAgent.split('/');
+			var version_str = parts[parts.length-1];
+			var version_float = parseFloat(version_str);
+			var versionA = version_str.split('.');
+			var version_minor = (versionA.length == 3) ? parseInt(versionA[2]) : 0;
+	
+			if (navigator.userAgent.match(/(AtomShell)/g)) {
+				// Electron-based app
+				if (is_lin) {
+					v.lin_ssb_version = version_float;
+					v.lin_ssb_version_minor = version_minor;
+				} else {
+					v.win_ssb_version = version_float;
+					v.win_ssb_version_minor = version_minor;
+				}
+			} else {
+				// MacGap-based app
+				v.mac_ssb_version = version_float;
+				v.mac_ssb_version_minor = version_minor;
+				
+				// buildVersion() only available in 2.0 + (and not early builds)
+				// returns a string like "2.0.0 (7447)" and we want the part in parens
+				var app_ver = window.macgap && macgap.app && macgap.app.buildVersion && macgap.app.buildVersion();
+				var matches = String(app_ver).match(/(?:\()(.*)(?:\))/);
+				v.mac_ssb_build = (matches && matches.length == 2) ? parseInt(matches[1] || 0) : 0;
+			}
+		}
+
+		return v;
+	})(),
+	
+	
+
+	call: function() {
+		return false;
+	}
+
+	
+}
+
+</script>	<script type="text/javascript">
+		
+		var was_TS = window.TS;
+		delete window.TS;
+		TSSSB.call('didFinishLoading');
+		if (was_TS) window.TS = was_TS;
+	</script>
+	    <meta charset="utf-8">
+    <title>chegg-hackingedu-2015-postman.json | CodingEDU Slack</title>
+    <meta name="author" content="Slack">
+
+	
+				
+				
+	
+
+		
+				<!-- output_css "core" -->
+    <link href="https://slack.global.ssl.fastly.net/40e9d/style/rollup-plastic.css" rel="stylesheet" type="text/css">
+
+		<!-- output_css "before_file_pages" -->
+    <link href="https://slack.global.ssl.fastly.net/e9e7/style/libs/codemirror.css" rel="stylesheet" type="text/css">
+
+	<!-- output_css "file_pages" -->
+    <link href="https://slack.global.ssl.fastly.net/a846/style/rollup-file_pages.css" rel="stylesheet" type="text/css">
+
+	<!-- output_css "regular" -->
+    <link href="https://slack.global.ssl.fastly.net/e3b8/style/print.css" rel="stylesheet" type="text/css">
+    <link href="https://slack.global.ssl.fastly.net/782b/style/libs/lato-1.css" rel="stylesheet" type="text/css">
+
+	
+
+	
+	
+	
+
+	<!--[if lt IE 9]>
+	<script src="https://slack.global.ssl.fastly.net/ef0d/js/libs/html5shiv.js"></script>
+	<![endif]-->
+
+	
+<link id="favicon" rel="shortcut icon" href="https://slack.global.ssl.fastly.net/66f9/img/icons/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png" />
+
+<link rel="icon" href="https://slack.global.ssl.fastly.net/ba3c/img/icons/app-256.png" sizes="256x256" type="image/png" />
+
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-152.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://slack.global.ssl.fastly.net/0dc1/img/icons/ios-72.png" />
+<link rel="apple-touch-icon-precomposed" href="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-57.png" />
+
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="https://slack.global.ssl.fastly.net/66f9/img/icons/app-144.png" />	<script>
+!function(a,b){function c(a,b){try{if("function"!=typeof a)return a;if(!a.bugsnag){var c=e();a.bugsnag=function(d){if(b&&b.eventHandler&&(u=d),v=c,!y){var e=a.apply(this,arguments);return v=null,e}try{return a.apply(this,arguments)}catch(f){throw l("autoNotify",!0)&&(x.notifyException(f,null,null,"error"),s()),f}finally{v=null}},a.bugsnag.bugsnag=a.bugsnag}return a.bugsnag}catch(d){return a}}function d(){B=!1}function e(){var a=document.currentScript||v;if(!a&&B){var b=document.scripts||document.getElementsByTagName("script");a=b[b.length-1]}return a}function f(a){var b=e();b&&(a.script={src:b.src,content:l("inlineScript",!0)?b.innerHTML:""})}function g(b){var c=l("disableLog"),d=a.console;void 0===d||void 0===d.log||c||d.log("[Bugsnag] "+b)}function h(b,c,d){if(d>=5)return encodeURIComponent(c)+"=[RECURSIVE]";d=d+1||1;try{if(a.Node&&b instanceof a.Node)return encodeURIComponent(c)+"="+encodeURIComponent(r(b));var e=[];for(var f in b)if(b.hasOwnProperty(f)&&null!=f&&null!=b[f]){var g=c?c+"["+f+"]":f,i=b[f];e.push("object"==typeof i?h(i,g,d):encodeURIComponent(g)+"="+encodeURIComponent(i))}return e.join("&")}catch(j){return encodeURIComponent(c)+"="+encodeURIComponent(""+j)}}function i(a,b){if(null==b)return a;a=a||{};for(var c in b)if(b.hasOwnProperty(c))try{a[c]=b[c].constructor===Object?i(a[c],b[c]):b[c]}catch(d){a[c]=b[c]}return a}function j(a,b){a+="?"+h(b)+"&ct=img&cb="+(new Date).getTime();var c=new Image;c.src=a}function k(a){var b={},c=/^data\-([\w\-]+)$/;if(a)for(var d=a.attributes,e=0;e<d.length;e++){var f=d[e];if(c.test(f.nodeName)){var g=f.nodeName.match(c)[1];b[g]=f.value||f.nodeValue}}return b}function l(a,b){C=C||k(J);var c=void 0!==x[a]?x[a]:C[a.toLowerCase()];return"false"===c&&(c=!1),void 0!==c?c:b}function m(a){return a&&a.match(D)?!0:(g("Invalid API key '"+a+"'"),!1)}function n(b,c){var d=l("apiKey");if(m(d)&&A){A-=1;var e=l("releaseStage"),f=l("notifyReleaseStages");if(f){for(var h=!1,k=0;k<f.length;k++)if(e===f[k]){h=!0;break}if(!h)return}var n=[b.name,b.message,b.stacktrace].join("|");if(n!==w){w=n,u&&(c=c||{},c["Last Event"]=q(u));var o={notifierVersion:H,apiKey:d,projectRoot:l("projectRoot")||a.location.protocol+"//"+a.location.host,context:l("context")||a.location.pathname,userId:l("userId"),user:l("user"),metaData:i(i({},l("metaData")),c),releaseStage:e,appVersion:l("appVersion"),url:a.location.href,userAgent:navigator.userAgent,language:navigator.language||navigator.userLanguage,severity:b.severity,name:b.name,message:b.message,stacktrace:b.stacktrace,file:b.file,lineNumber:b.lineNumber,columnNumber:b.columnNumber,payloadVersion:"2"},p=x.beforeNotify;if("function"==typeof p){var r=p(o,o.metaData);if(r===!1)return}return 0===o.lineNumber&&/Script error\.?/.test(o.message)?g("Ignoring cross-domain script error. See https://bugsnag.com/docs/notifiers/js/cors"):(j(l("endpoint")||G,o),void 0)}}}function o(){var a,b,c=10,d="[anonymous]";try{throw new Error("")}catch(e){a="<generated>\n",b=p(e)}if(!b){a="<generated-ie>\n";var f=[];try{for(var h=arguments.callee.caller.caller;h&&f.length<c;){var i=E.test(h.toString())?RegExp.$1||d:d;f.push(i),h=h.caller}}catch(j){g(j)}b=f.join("\n")}return a+b}function p(a){return a.stack||a.backtrace||a.stacktrace}function q(a){var b={millisecondsAgo:new Date-a.timeStamp,type:a.type,which:a.which,target:r(a.target)};return b}function r(a){if(a){var b=a.attributes;if(b){for(var c="<"+a.nodeName.toLowerCase(),d=0;d<b.length;d++)b[d].value&&"null"!=b[d].value.toString()&&(c+=" "+b[d].name+'="'+b[d].value+'"');return c+">"}return a.nodeName}}function s(){z+=1,a.setTimeout(function(){z-=1})}function t(a,b,c){var d=a[b],e=c(d);a[b]=e}var u,v,w,x={},y=!0,z=0,A=10;x.noConflict=function(){return a.Bugsnag=b,x},x.refresh=function(){A=10},x.notifyException=function(a,b,c,d){b&&"string"!=typeof b&&(c=b,b=void 0),c||(c={}),f(c),n({name:b||a.name,message:a.message||a.description,stacktrace:p(a)||o(),file:a.fileName||a.sourceURL,lineNumber:a.lineNumber||a.line,columnNumber:a.columnNumber?a.columnNumber+1:void 0,severity:d||"warning"},c)},x.notify=function(b,c,d,e){n({name:b,message:c,stacktrace:o(),file:a.location.toString(),lineNumber:1,severity:e||"warning"},d)};var B="complete"!==document.readyState;document.addEventListener?(document.addEventListener("DOMContentLoaded",d,!0),a.addEventListener("load",d,!0)):a.attachEvent("onload",d);var C,D=/^[0-9a-f]{32}$/i,E=/function\s*([\w\-$]+)?\s*\(/i,F="https://notify.bugsnag.com/",G=F+"js",H="2.4.7",I=document.getElementsByTagName("script"),J=I[I.length-1];if(a.atob){if(a.ErrorEvent)try{0===new a.ErrorEvent("test").colno&&(y=!1)}catch(K){}}else y=!1;if(l("autoNotify",!0)){t(a,"onerror",function(b){return function(c,d,e,g,h){var i=l("autoNotify",!0),j={};!g&&a.event&&(g=a.event.errorCharacter),f(j),v=null,i&&!z&&n({name:h&&h.name||"window.onerror",message:c,file:d,lineNumber:e,columnNumber:g,stacktrace:h&&p(h)||o(),severity:"error"},j),b&&b(c,d,e,g,h)}});var L=function(a){return function(b,d){if("function"==typeof b){b=c(b);var e=Array.prototype.slice.call(arguments,2);return a(function(){b.apply(this,e)},d)}return a(b,d)}};t(a,"setTimeout",L),t(a,"setInterval",L),a.requestAnimationFrame&&t(a,"requestAnimationFrame",function(a){return function(b){return a(c(b))}}),a.setImmediate&&t(a,"setImmediate",function(a){return function(){var b=Array.prototype.slice.call(arguments);return b[0]=c(b[0]),a.apply(this,b)}}),"EventTarget Window Node ApplicationCache AudioTrackList ChannelMergerNode CryptoOperation EventSource FileReader HTMLUnknownElement IDBDatabase IDBRequest IDBTransaction KeyOperation MediaController MessagePort ModalWindow Notification SVGElementInstance Screen TextTrack TextTrackCue TextTrackList WebSocket WebSocketWorker Worker XMLHttpRequest XMLHttpRequestEventTarget XMLHttpRequestUpload".replace(/\w+/g,function(b){var d=a[b]&&a[b].prototype;d&&d.hasOwnProperty&&d.hasOwnProperty("addEventListener")&&(t(d,"addEventListener",function(a){return function(b,d,e,f){return d&&d.handleEvent&&(d.handleEvent=c(d.handleEvent,{eventHandler:!0})),a.call(this,b,c(d,{eventHandler:!0}),e,f)}}),t(d,"removeEventListener",function(a){return function(b,d,e,f){return a.call(this,b,d,e,f),a.call(this,b,c(d),e,f)}}))})}a.Bugsnag=x,"function"==typeof define&&define.amd?define([],function(){return x}):"object"==typeof module&&"object"==typeof module.exports&&(module.exports=x)}(window,window.Bugsnag);
+Bugsnag.apiKey = "2a86b308af5a81d2c9329fedfb4b30c7";
+Bugsnag.appVersion = "0e9380151a6d6ad01c4e3034487109aeb342d192" + '-' + "1445753316";
+Bugsnag.endpoint = "https://errors-webapp.slack-core.com/js";
+Bugsnag.releaseStage = "prod";
+Bugsnag.autoNotify = false;
+Bugsnag.user = {id:"U0D27TRFU",name:"armand",email:"adeasis10@gmail.com"};
+Bugsnag.metaData = {};
+Bugsnag.metaData.team = {id:"T0D2578KA",name:"CodingEDU",domain:"codingedu"};
+Bugsnag.refresh_interval = setInterval(function () { (window.TS && window.TS.client) ? Bugsnag.refresh() : clearInterval(Bugsnag.refresh_interval); }, 15 * 60 * 1000);
+</script>
+</head>
+
+<body class="">
+
+		  			<script>
+		
+			var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+			if (w > 1440) document.querySelector('body').classList.add('widescreen');
+		
+		</script>
+	
+  	
+	
+
+			<nav id="site_nav" class="no_transition">
+
+	<div id="site_nav_contents">
+
+		<div id="user_menu">
+			<div id="user_menu_contents">
+				<div id="user_menu_avatar">
+										<span class="member_image thumb_48" style="background-image: url('https://secure.gravatar.com/avatar/fb0b65022d5754870442e8e44b48b925.jpg?s=192&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0023-192.png')" data-thumb-size="48" data-member-id="U0D27TRFU"></span>
+					<span class="member_image thumb_36" style="background-image: url('https://secure.gravatar.com/avatar/fb0b65022d5754870442e8e44b48b925.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0023-72.png')" data-thumb-size="36" data-member-id="U0D27TRFU"></span>
+				</div>
+				<h3>Signed in as</h3>
+				<span id="user_menu_name">armand</span>
+			</div>
+		</div>
+
+		<div class="nav_contents">
+
+			<ul class="primary_nav">
+				<li><a href="/home"><i class="ts_icon ts_icon_home"></i>Home</a></li>
+				<li><a href="/account"><i class="ts_icon ts_icon_user"></i>Account & Profile</a></li>
+				<li><a href="/services/new"><i class="ts_icon ts_icon_plug"></i>Integrations</a></li>
+				<li><a href="/archives"><i class="ts_icon ts_icon_inbox"></i>Message Archives</a></li>
+				<li><a href="/files"><i class="ts_icon ts_icon_file"></i>Files</a></li>
+				<li><a href="/team"><i class="ts_icon ts_icon_team_directory"></i>Team Directory</a></li>
+									<li><a href="/stats"><i class="ts_icon ts_icon_dashboard"></i>Statistics</a></li>
+													<li><a href="/customize"><i class="ts_icon ts_icon_magic"></i>Customize</a></li>
+											</ul>
+
+							<h3>Administration</h3>
+				<ul id="admin_nav" class="secondary_nav">
+					<li><a href="/admin/settings">Team Settings</a></li>
+					<li><a href="/admin">Manage Your Team</a></li>
+					<li><a href="/admin/invites">Invitations</a></li>
+					<li><a href="/admin/billing">Billing</a></li>
+					<li><a href="/admin/auth">Authentication</a></li>
+				</ul>
+			
+		</div>
+
+		<div id="footer">
+
+			<ul id="footer_nav">
+				<li><a href="/is">Tour</a></li>
+				<li><a href="/apps">Slack Apps</a></li>
+				<li><a href="/brand-guidelines">Brand Guidelines</a></li>
+				<li><a href="/help">Help</a></li>
+				<li><a href="https://api.slack.com" target="_blank">API<i class="ts_icon ts_icon_external_link small_left_margin ts_icon_inherit"></i></a></li>
+									<li><a href="/account/gateways">Gateways</a></li>
+								<li><a href="/pricing">Pricing</a></li>
+				<li><a href="/help/requests/new">Contact</a></li>
+				<li><a href="/terms-of-service">Policies</a></li>
+				<li><a href="http://slackhq.com/" target="_blank">Our Blog</a></li>
+				<li><a href="https://slack.com/signout/13073246656?crumb=s-1445778579-26bbfa3c6d-%E2%98%83">Sign Out<i class="ts_icon ts_icon_sign_out small_left_margin ts_icon_inherit"></i></a></li>
+			</ul>
+
+			<p id="footer_signature">Made with <i class="ts_icon ts_icon_heart"></i> by Slack</p>
+
+		</div>
+
+	</div>
+</nav>	
+			<header>
+							<a id="menu_toggle" class="no_transition">
+					<span class="menu_icon"></span>
+					<span class="menu_label">Menu</span>
+					<span class="vert_divider"></span>
+				</a>
+				<h1 id="header_team_name" class="inline_block no_transition">
+					<a href="/home">
+						<i class="ts_icon ts_icon_home" /></i>
+						CodingEDU
+					</a>
+				</h1>
+				<div class="header_nav">
+					<div class="header_btns float_right">
+						<a id="team_switcher">
+							<i class="ts_icon ts_icon_th_large ts_icon_inherit"></i>
+							<span class="block label">Teams</span>
+						</a>
+						<a href="/help" id="help_link">
+							<i class="ts_icon ts_icon_life_ring ts_icon_inherit"></i>
+							<span class="block label">Help</span>
+						</a>
+						<a href="/messages">
+							<img src="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-64.png" srcset="https://slack.global.ssl.fastly.net/66f9/img/icons/ios-32.png 1x, https://slack.global.ssl.fastly.net/66f9/img/icons/ios-64.png 2x" />
+							<span class="block label">Launch</span>
+						</a>
+					</div>
+								                    <ul id="header_team_nav">
+			                        			                            <li >
+			                            	<a href="https://cdjune22.slack.com/home" target="https://cdjune22.slack.com/">
+			                            					                            					                            			<i class="team_icon default" >CJ</i>
+			                            					                            		<span class="switcher_label team_name">CD June 22</span>
+			                            	</a>
+			                            </li>
+			                        			                            <li >
+			                            	<a href="https://hackingeduhackathon.slack.com/home" target="https://hackingeduhackathon.slack.com/">
+			                            					                            						                            		<i class="team_icon" style="background-image: url('https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2015-09-21/11053764784_6248d087dcdddbf8d9bb_88.jpg');"></i>
+				                            				                            		<span class="switcher_label team_name">HackingEDU Hackathon</span>
+			                            	</a>
+			                            </li>
+			                        			                            <li >
+			                            	<a href="https://inegratehackathon.slack.com/home" target="https://inegratehackathon.slack.com/">
+			                            					                            					                            			<i class="team_icon default" >I</i>
+			                            					                            		<span class="switcher_label team_name">InegrateHackathon</span>
+			                            	</a>
+			                            </li>
+			                        			                            <li class="active">
+			                            	<a href="https://codingedu.slack.com/home" target="https://codingedu.slack.com/">
+			                            					                            			<i class="ts_icon ts_icon_check_circle_o active_icon"></i>
+			                            					                            					                            			<i class="team_icon default" style="background: #0D7E83;">C</i>
+			                            					                            		<span class="switcher_label team_name">CodingEDU</span>
+			                            	</a>
+			                            </li>
+			                        			                        <li id="add_team_option"><a href="https://slack.com/signin" target="_blank"><i class="ts_icon ts_icon_plus team_icon"></i> <span class="switcher_label">Sign in to another team...</span></a></li>
+			                    </ul>
+			                				</div>
+			
+			
+		</header>
+	
+	<div id="page" >
+
+		<div id="page_contents" class="">
+
+<p class="print_only">
+	<strong>Created by jenkimm on October 24, 2015 at 6:54 PM</strong><br />
+	<span class="subtle_silver break_word">https://codingedu.slack.com/files/jenkimm/F0D4XC1QC/chegg-hackingedu-2015-postman.json</span>
+</p>
+
+<div class="file_header_container no_print"></div>
+
+<div class="alert_container">
+		<div class="file_public_link_shared alert" style="display: none;">
+			<a id="file_public_link_revoker" class="btn btn_small btn_outline float_right" data-toggle="tooltip" title="You can revoke the public link to this file. This will cause any previously shared links to stop working.">Revoke</a>
+		
+	<i class="ts_icon ts_icon_link"></i> Public Link: <a class="file_public_link" href="https://slack-files.com/T0D2578KA-F0D4XC1QC-95253fad36" target="new">https://slack-files.com/T0D2578KA-F0D4XC1QC-95253fad36</a>
+</div></div>
+
+<div id="file_page" class="card top_padding">
+
+	<p class="small subtle_silver no_print meta">
+		43KB JavaScript/JSON snippet created on <span class="date">October 24th 2015</span>.
+				<span class="file_share_list"></span>
+	</p>
+
+	<a id="file_action_cog" class="action_cog action_cog_snippet float_right no_print">
+		<span>Actions </span><i class="ts_icon ts_icon_cog"></i>
+	</a>
+	<a id="snippet_expand_toggle" class="float_right no_print">
+		<i class="ts_icon ts_icon_expand "></i>
+		<i class="ts_icon ts_icon_compress hidden"></i>
+	</a>
+
+	<div class="large_bottom_margin clearfix">
+		<pre id="file_contents">
+{
+  &quot;id&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+  &quot;name&quot;: &quot;Chegg APIs - HackingEDU2015&quot;,
+  &quot;description&quot;: &quot;Fetch detailed information such as title, author and edition about textbooks or related items. \nFind related items to a textbook that include recommended books, supplement materials, ebooks and textbook solutions.&quot;,
+  &quot;order&quot;: [
+    &quot;ccc368c0-bad5-a257-bec8-d699403aaff6&quot;,
+    &quot;8e0b0d73-607e-edd7-16ed-e9451ff4b305&quot;,
+    &quot;0680d7b4-e921-6d85-ad49-897ffe3e5877&quot;,
+    &quot;f4331f80-cc2f-9edc-a2b4-4d0c8feb2e2c&quot;,
+    &quot;52f07460-5811-9d52-1d76-17fc3e63e723&quot;,
+    &quot;b1b1d0f1-de70-6d9b-b7cc-dfcff782236e&quot;,
+    &quot;82d9965c-e787-8f5f-d484-902962150aaf&quot;,
+    &quot;27e9153e-1f9f-162a-0abf-de2b3b6eda63&quot;,
+    &quot;679d7555-c507-b349-3592-220fcb2f3190&quot;,
+    &quot;80648e06-cde6-83e6-c979-cc4767ef3ae5&quot;,
+    &quot;f20f53de-fffc-fd5a-bf18-f20303dc131d&quot;,
+    &quot;6abf483d-d594-5177-c5e4-76619a1fd3e3&quot;,
+    &quot;0326cb51-83ab-8d69-9d57-8c4968a7c85a&quot;
+  ],
+  &quot;folders&quot;: [],
+  &quot;timestamp&quot;: 1444849375171,
+  &quot;owner&quot;: &quot;830&quot;,
+  &quot;remoteLink&quot;: &quot;&quot;,
+  &quot;public&quot;: false,
+  &quot;requests&quot;: [
+    {
+      &quot;id&quot;: &quot;0326cb51-83ab-8d69-9d57-8c4968a7c85a&quot;,
+      &quot;headers&quot;: &quot;Content-Type: application/json\nAuthorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/scholarshipsearch/search/v3&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;PUT&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;raw&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445640352905,
+      &quot;name&quot;: &quot;Scholarships: Search scholarships by criteria&quot;,
+      &quot;description&quot;: &quot;### Find scholarships matching specific criteria\nIt is PUT search by criteria scholarship request where the body would specify the scholarships filters.\n\n#### Parameters\nRequest body should be `JSON` formatted. `Content-Type` HTTP header should be `application/json`.\nAll fields are optional but at least one should be present. Possible values are:\n\n* `gpa` field - min gpa value\n* `startNum` - start index of search results\n* `age` - min age value\n* `essayRequired` - is essay required to get scholorship?\n* `onlineApplication` - is application online or offline?\n* `meritAidOnly` - is the aid given only based on merit?\n* `provider_type` - can be `REGULAR` or `SCHOOL`\n* `sortBy` - can be `matchStrength` or `application_deadline`\n* `schoolId` - only constraint to scholorships accepted/offered by a specific school\n* `limit` - max number of records to returns, cannot be more than 10\n* `startNum` - in case of pagination, result number to start from\n\n#### Sample Usage\nBody request:\n```\n{\n    \&quot;age\&quot;:\&quot;18\&quot;,\n    \&quot;gpa\&quot;: 4,\n    \&quot;limit\&quot;: 10,\n    \&quot;startNum\&quot;: 1,\n    \&quot;essayRequired\&quot;: \&quot;0\&quot;,\n    \&quot;onlineApplication\&quot;:\&quot;1\&quot;,\n    \&quot;meritAidOnly\&quot;:\&quot;1\&quot;,\n    \&quot;provider_type\&quot;: \&quot;REGULAR\&quot;,\n    \&quot;sortBy\&quot;: \&quot;matchStrength\&quot;,\n    \&quot;schoolId\&quot;:\&quot;ba8e7a1f-0042-45eb-ada0-7e0f38b81628\&quot;\n}\n```&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;rawModeData&quot;: &quot;{\n    \&quot;age\&quot;:\&quot;18\&quot;,\n    \&quot;gpa\&quot;: 4,\n    \&quot;limit\&quot;: 10,\n    \&quot;startNum\&quot;: 1,\n    \&quot;essayRequired\&quot;: \&quot;0\&quot;,\n    \&quot;onlineApplication\&quot;:\&quot;1\&quot;,\n    \&quot;meritAidOnly\&quot;:\&quot;1\&quot;,\n    \&quot;provider_type\&quot;: \&quot;REGULAR\&quot;,\n    \&quot;sortBy\&quot;: \&quot;matchStrength\&quot;,\n    \&quot;schoolId\&quot;:\&quot;ba8e7a1f-0042-45eb-ada0-7e0f38b81628\&quot;\n}\n&quot;
+    },
+    {
+      &quot;id&quot;: &quot;0680d7b4-e921-6d85-ad49-897ffe3e5877&quot;,
+      &quot;headers&quot;: &quot;Accept: application/json\nContent-Type: application/json\nAuthorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;http://hackingedu.chegg.com/hacking-edu/catalog/priced/byId/{{catalogItemId}}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445634056567,
+      &quot;name&quot;: &quot;Textbook Catalog: Get item by Item ID&quot;,
+      &quot;description&quot;: &quot;### Get item by its Item ID. \nGives detailed information about the item. You can obtain the item ID from Search API response. Main interesting attributes of the books are:\n\n   * type - type of the item, in most cases either *TEXTBOOK* or *EBOOK*\n   * title - title of the item\n   * isbn - ISBN, standard book identifier, 10 characters\n   * ean - EAN or ISBN123, standard book identifier, 13 digits\n   * edition - book edition text\n   * editionNo - book edition number\n   * primaryAuthor - primary book author\n   * authors - the list of all book authors\n   * description - description for the book, can be plain text or html\n   * listPrice - list price of the book\n   * img... attributes, url to the book cover images, there are several size options\n   * prices section - sample list of available prices and options available for the customer to get the book, which are either *Rent* or *Sell* and come in *priceType* price attribute.\n\nUseful price attributes:\n\n* price - price of the option\n* pricingType.nameValuePairs.priceType - *Rent* or *Sell*\n* pricingType.nameValuePairs.termDays - number of days for the rental, applicable to rental only\n* pricingType.nameValuePairs.dueDate - due date when the book should be returned back, correlates to the termDays\n* logId - ID for the price that can be passed to chegg.com to place item in the cart, see Textbook Catalog: cart redirect\n\nNote that there might be multiple rental options combined with the sell options for different conditions.\n\n#### Parameters\n  * `catalogItemId` (required, last section of the URL): item ID to get the details for. You can obtain the item ID from `Search: Basic Textbook Search` API response.\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/catalog/priced/byId/LBP-1`\n\n#### Response example\n``` \n{\n    \&quot;type\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;catalogItemId\&quot;: \&quot;LBP-1\&quot;,\n    \&quot;name\&quot;: \&quot;Biology\&quot;,\n    \&quot;transType\&quot;: \&quot;RENTAL, SELL\&quot;,\n    \&quot;status\&quot;: \&quot;ACTIVE\&quot;,\n    \&quot;catalogItemType\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;catalogProviderId\&quot;: \&quot;LBP\&quot;,\n    \&quot;createdDate\&quot;: \&quot;2009-02-04 00:00:00.000 -0800\&quot;,\n    \&quot;modifiedDate\&quot;: \&quot;2011-02-02 00:00:00.000 -0800\&quot;,\n    \&quot;prices\&quot;: [\n        {\n            \&quot;price\&quot;: 79.49,\n            \&quot;pricingType\&quot;: \n            {\n                \&quot;nameValuePairs\&quot;: \n                {\n                    \&quot;termName\&quot;: \&quot;Semester Rental\&quot;,\n                    \&quot;termDays\&quot;: \&quot;58\&quot;,\n                    \&quot;priceType\&quot;: \&quot;Rent\&quot;,\n                    \&quot;expires\&quot;: \&quot;2015-10-22 12:21\&quot;,\n                    \&quot;term\&quot;: \&quot;SEMESTER\&quot;,\n                    \&quot;dueDate\&quot;: \&quot;2015-12-18\&quot;\n                }\n            },\n            \&quot;logId\&quot;: \&quot;ce8520a0-6508-4388-a919-30f7b22853d7\&quot;\n        },\n        {\n            \&quot;price\&quot;: 24.49,\n            \&quot;pricingType\&quot;:  \n            {\n                \&quot;nameValuePairs\&quot;: \n                {\n                    \&quot;expires\&quot;: \&quot;2015-10-22 12:21\&quot;,\n                    \&quot;condition\&quot;: \&quot;Used\&quot;,\n                    \&quot;priceType\&quot;: \&quot;Sell\&quot;,\n                }\n            },\n            \&quot;logId\&quot;: \&quot;b6ce3c12-438b-4a2a-8b53-9af4f52441ba\&quot;\n        }\n    ],\n    \&quot;isbn\&quot;: \&quot;080537146X\&quot;,\n    \&quot;ean\&quot;: \&quot;9780805371468\&quot;,\n    \&quot;edition\&quot;: \&quot;ILL,REV\&quot;,\n    \&quot;editionNo\&quot;: \&quot;7\&quot;,\n    \&quot;primaryAuthor\&quot;: \&quot;Campbell, Neil A.\&quot;,\n    \&quot;bisacCode\&quot;: \&quot;SCI008000\&quot;,\n    \&quot;bisacLabel\&quot;: \&quot;SCIENCE Life Sciences Biology\&quot;,\n    \&quot;copyright\&quot;: \&quot;2005\&quot;,\n    \&quot;illustrated\&quot;: false,\n    \&quot;listPrice\&quot;: \&quot;179.40\&quot;,\n    \&quot;title\&quot;: \&quot;Biology\&quot;,\n    \&quot;subtitle\&quot;: null,\n    \&quot;publisherName\&quot;: \&quot;Benjamin-Cummings Publishing Company\&quot;,\n    \&quot;audienceCode\&quot;: \&quot;C\&quot;,\n    \&quot;lcp\&quot;: 4,\n    \&quot;description\&quot;: \&quot;&lt;p&gt;Neil Campbell and Jane Reece&amp;#39;s&lt;b&gt;&lt;i&gt;BIOLOGY&lt;/i&gt;&lt;/b&gt;remains unsurpassed as the most successful majors biology textbook in the world. This text has invited more than 4 million students into the study of this dynamic and essential discipline.The authors have restructured each chapter around a conceptual framework of five or six big ideas. An Overview draws students in and sets the stage for the rest of the chapter, each numbered Concept Head announces the beginning of a new concept, and Concept Check questions at the end of each chapter encourage students to assess their mastery of a given concept.&amp;nbsp;New Inquiry Figures focus students on the experimental process, and new Research Method Figures illustrate important techniques in biology. Each chapter ends with a Scientific Inquiry Question that asks students to apply scientific investigation skills to the content of the chapter.&lt;/p&gt;\&quot;,\n    \&quot;toc\&quot;: null,\n    \&quot;biblioId\&quot;: 1,\n    \&quot;containsExtra\&quot;: true,\n    \&quot;authors\&quot;: \n    [\n        \&quot;Campbell, Neil A.\&quot;,\n        \&quot;Reece, Jane B.\&quot;,\n        \&quot;Urry, Lisa A.\&quot;,\n        \&quot;Heyden, Robin\&quot;,\n        \&quot;Molles, Manuel\&quot;\n    ],\n    \&quot;width\&quot;: 23.5,\n    \&quot;length\&quot;: 28.58,\n    \&quot;height\&quot;: 5.08,\n    \&quot;weight\&quot;: 7.2,\n    \&quot;carton_qty\&quot;: 3,\n    \&quot;binding_1\&quot;: \&quot;WW\&quot;,\n    \&quot;binding_2\&quot;: \&quot;\&quot;,\n    \&quot;media_1\&quot;: \&quot;S\&quot;,\n    \&quot;subCategory\&quot;: 1,\n    \&quot;dac\&quot;: false,\n    \&quot;publishDate\&quot;: \&quot;2004-12-13\&quot;,\n    \&quot;imgWidth80\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width80.jpg\&quot;,\n    \&quot;imgWidth100\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width100.jpg\&quot;,\n    \&quot;imgWidth400\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width400.jpg\&quot;,\n    \&quot;imgWidth144\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width144.jpg\&quot;,\n    \&quot;imgBox60_70\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Box60x70.jpg\&quot;,\n    \&quot;imgWidth288\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width288.jpg\&quot;,\n    \&quot;imgWidth200\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width200.jpg\&quot;,\n    \&quot;imgWidth120\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width120.jpg\&quot;\n}\n```\n\n#### Notes\nHaving `logId` of the particular price allows to redirect to chegg.com and have the item with the pricing option corresponding to the log ID placed to a cart. See `Textbook Catalog: Add textbook items to cart` API.&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;27e9153e-1f9f-162a-0abf-de2b3b6eda63&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/majors/?q=name:*Computer*&amp;limit=12&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445637926614,
+      &quot;name&quot;: &quot;Schools: Search majors by name&quot;,
+      &quot;description&quot;: &quot;### List available majors that match search criteria \n#### Params:\n  * `q` (required): search string, * is a supported wildcard\n  * `fields` (optional): comma seperated list of the attributes of the Major to return; to find available attribute names, hit the endpoint without fields parameter first.\n  * `limit` (optional): how many results per page to return\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/majors/?q=name:*Computer*&amp;limit=12`\n - All majors with string `Computer` in their names, limit result to 12 entries, get all attributes.&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;52f07460-5811-9d52-1d76-17fc3e63e723&quot;,
+      &quot;headers&quot;: &quot;&quot;,
+      &quot;url&quot;: &quot;http://www.chegg.com/shoppingcart/add?command=LBP-41902660,49c127be-ff83-4545-85f8-604a4f69e037,1&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445631374220,
+      &quot;name&quot;: &quot;Textbook Catalog: Add textbook items to shopping cart&quot;,
+      &quot;description&quot;: &quot;### Show chegg.com site with the items added to a shopping cart. \nAdd textbook item(s) to Chegg Cart.\n\n#### Parameters\n   * `command` (required): command has value of items of this format `catalogItemId,logId,quantity` separated by pipe(|).\n\n#### Notes\nThis is not an API. Once catalogItemId and logID are known for a textbook item(s), load chegg site with url [http://www.chegg.com/shoppingcart/add?command=&lt;value&gt;](http://www.chegg.com/shoppingcart/add?command=&lt;value&gt;).\n\n#### Sample Usage\n * Add single item in cart: [http://www.chegg.com/shoppingcart/add?command=LBP-41902660,49c127be-ff83-4545-85f8-604a4f69e037,1](http://www.chegg.com/shoppingcart/add?command=LBP-41902660,49c127be-ff83-4545-85f8-604a4f69e037,1)\n * Add multiple Items in cart: [http://www.chegg.com/shoppingcart/add?command=LBP-41902660,49c127be-ff83-4545-85f8-604a4f69e037,1|LBP-43898306,9b34f6b7-65e2-483f-884e-7f3219d2cdd6,1](http://www.chegg.com/shoppingcart/add?command=LBP-41902660,49c127be-ff83-4545-85f8-604a4f69e037,1|LBP-43898306,9b34f6b7-65e2-483f-884e-7f3219d2cdd6,1)\n\nNote that those sample URLs probably won&#039;t work as is, as the prices expire. The urls here give an example of the usage.\n\n#### Response example\nUser will be redirected to Chegg shopping cart page with item(s) added.\n&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;
+    },
+    {
+      &quot;id&quot;: &quot;679d7555-c507-b349-3592-220fcb2f3190&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/majors/{majorID}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445637981615,
+      &quot;name&quot;: &quot;Schools: Get major info by major ID&quot;,
+      &quot;description&quot;: &quot;### Get detailed information of the major by its ID.\n\n#### Params:\n  * `majorID` (required): ID of the major, which you can obtain by searching majors by name, see `Schools: Search majors by name` API\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/majors/095b2352-7476-48f8-b2d6-288088388a57` - Returns details about the major with the specified ID &quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;6abf483d-d594-5177-c5e4-76619a1fd3e3&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/scholarship/school/{schoolID}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445639595824,
+      &quot;name&quot;: &quot;Scholarships: Get scholarships by a school&quot;,
+      &quot;description&quot;: &quot;### Find scholarships offered by a school\nA simple GET request to fetch scholorships by school ID (not IPED ID), which you can obtain from school search API (`Schools: Search schools by name` or `Schools: Get school info by ID`).\n\n#### Parameters\n  * `schoolID` (required, last section of the URL)\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/scholarship/school/3a3172e4-17f0-42f8-907e-0af5901cd5f4`&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;
+    },
+    {
+      &quot;id&quot;: &quot;80648e06-cde6-83e6-c979-cc4767ef3ae5&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/scholarshipsearch/suggest/?q=Richardson&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445638845483,
+      &quot;name&quot;: &quot;Scholarships: Search scholarship by name&quot;,
+      &quot;description&quot;: &quot;### Find available scholarships by name  \n\n#### Parameters\n  * `q` (required): search string\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/scholarshipsearch/suggest/?q=Richardson` - All scholarships with the string `Richardson` in their names&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;
+    },
+    {
+      &quot;id&quot;: &quot;82d9965c-e787-8f5f-d484-902962150aaf&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/schools/{schoolID}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445637120712,
+      &quot;name&quot;: &quot;Schools: Get school info by ID&quot;,
+      &quot;description&quot;: &quot;### Get single school details\nGet detailed school information by school ID, which you can obtain by searching for school by school name or location - see `Schools: Search schools by name`.\n\n####Params:\n  * `schoolID` (required, last section of the URL); note that schoolID is not the same as school IPED ID.\n\nHere are the useful school fields that are exposed:\n\n* schoolLinks\n* schoolName\n* schoolLocations\n* alias\n* schoolDeadlines\n* clubSportsMen\n* extraCurricularActivities\n* clubSportsWomen\n* sportsOffered\n* highestDegreeOffered\n* majors\n* areasOfStudy\n* schoolType\n* modifiedDate\n* similarSchools\n* schoolTransferInformation\n* schoolApplicationRequirements\n* description\n* schoolMediaAssets\n* logoURL\n* coverImageUrl\n* profilePictureURL\n* schoolStatistics\n* admissionStatistics\n* studentExperience\n* costStatistics\n* academicStatistics\n* outcomesStatistics\n* rankingStatistics\n* schoolID\n* schoolBasic\n* region\n* mascot\n* ipedId\n* genderPreference\n* percentStudentsOutofState\n* offersRollingAdmission\n* fundingType\n* learningEnvironment\n* offersOpenAdmission\n* religiousAffiliation\n* schoolAbbreviation\n* schoolTerm\n* schoolColors\n* shortName\n* calendaringSystem\n* schoolLocale\n\n\nFor each school location we expose:\n\n* addressState\n* phone\n* locationId\n* isPrimaryAddress\n* addressLongitude\n* isDeleted\n* addressLine2\n* modifiedDate\n* addressLine1\n* province-region\n* city\n* mailingCity\n* mailingZip\n* postalCode\n* addressLatitude\n* mailingState\n* schoolID\n* mailingLine2\n* addressCountry\n* zipMetroCode\n* createdDate\n* mailingLine1\n*addressZip\n\nFor each major, we expose\n\n* cipcode\n* majorName\n* majorId\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/schools/ba8e7a1f-0042-45eb-ada0-7e0f38b81628`&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;8e0b0d73-607e-edd7-16ed-e9451ff4b305&quot;,
+      &quot;headers&quot;: &quot;Accept: application/json\nContent-Type: application/json\nAuthorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/catalog/priced/byEan/{EAN}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445634065135,
+      &quot;name&quot;: &quot;Textbook Catalog: Get item by EAN&quot;,
+      &quot;description&quot;: &quot;### Get items by EAN. \nGives detailed information about items by EAN (a standard book identifier). The result is an array of items that are identified by the given EAN. In most case it&#039;s expected that it would be a single book.\nMain interesting attributes of the books are:\n\n   * type - type of the item, in most cases either `TEXTBOOK` or `EBOOK`\n   * title - title of the item\n   * isbn - ISBN, standard book identifier, 10 characters\n   * ean - EAN or ISBN123, standard book identifier, 13 digits\n   * edition - book edition text\n   * editionNo - book edition number\n   * primaryAuthor - primary book author\n   * authors - the list of all book authors\n   * description - description for the book, can be plain text or html\n   * listPrice - list price of the book\n   * img... attributes, url to the book cover images, there are several size options\n   * prices section - sample list of available prices and options available for the customer to get the book, which are either *Rent* or *Sell* and come in *priceType* price attribute.\n\nUseful price attributes:\n\n* price - price of the option\n* pricingType.nameValuePairs.priceType - `Rent` or `Sell`\n* pricingType.nameValuePairs.termDays - number of days for the rental, applicable to rental only\n* pricingType.nameValuePairs.dueDate - due date when the book should be returned back, correlates to the termDays\n* logId - ID for the price that can be passed to chegg.com to place item in the cart, see Textbook Catalog: cart redirect\n\nNote that there might be multiple rental options combined with the sell options for different conditions.\n\n#### Parameters\n  * `EAN` (required, last section of the URL): EAN of the item (which does not have to be a book) to get the details for.\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/catalog/priced/byEan/9780805371468`\n\n#### Response example\n``` \n[{\n    \&quot;type\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;catalogItemId\&quot;: \&quot;LBP-1\&quot;,\n    \&quot;name\&quot;: \&quot;Biology\&quot;,\n    \&quot;transType\&quot;: \&quot;RENTAL, SELL\&quot;,\n    \&quot;status\&quot;: \&quot;ACTIVE\&quot;,\n    \&quot;catalogItemType\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;catalogProviderId\&quot;: \&quot;LBP\&quot;,\n    \&quot;createdDate\&quot;: \&quot;2009-02-04 00:00:00.000 -0800\&quot;,\n    \&quot;modifiedDate\&quot;: \&quot;2011-02-02 00:00:00.000 -0800\&quot;,\n    \&quot;prices\&quot;: [\n        {\n            \&quot;price\&quot;: 79.49,\n            \&quot;pricingType\&quot;: \n            {\n                \&quot;nameValuePairs\&quot;: \n                {\n                    \&quot;termName\&quot;: \&quot;Semester Rental\&quot;,\n                    \&quot;termDays\&quot;: \&quot;58\&quot;,\n                    \&quot;priceType\&quot;: \&quot;Rent\&quot;,\n                    \&quot;expires\&quot;: \&quot;2015-10-22 12:21\&quot;,\n                    \&quot;term\&quot;: \&quot;SEMESTER\&quot;,\n                    \&quot;dueDate\&quot;: \&quot;2015-12-18\&quot;\n                }\n            },\n            \&quot;logId\&quot;: \&quot;ce8520a0-6508-4388-a919-30f7b22853d7\&quot;\n        },\n        {\n            \&quot;price\&quot;: 24.49,\n            \&quot;pricingType\&quot;:  \n            {\n                \&quot;nameValuePairs\&quot;: \n                {\n                    \&quot;expires\&quot;: \&quot;2015-10-22 12:21\&quot;,\n                    \&quot;condition\&quot;: \&quot;Used\&quot;,\n                    \&quot;priceType\&quot;: \&quot;Sell\&quot;,\n                }\n            },\n            \&quot;logId\&quot;: \&quot;b6ce3c12-438b-4a2a-8b53-9af4f52441ba\&quot;\n        }\n    ],\n    \&quot;isbn\&quot;: \&quot;080537146X\&quot;,\n    \&quot;ean\&quot;: \&quot;9780805371468\&quot;,\n    \&quot;edition\&quot;: \&quot;ILL,REV\&quot;,\n    \&quot;editionNo\&quot;: \&quot;7\&quot;,\n    \&quot;primaryAuthor\&quot;: \&quot;Campbell, Neil A.\&quot;,\n    \&quot;bisacCode\&quot;: \&quot;SCI008000\&quot;,\n    \&quot;bisacLabel\&quot;: \&quot;SCIENCE Life Sciences Biology\&quot;,\n    \&quot;copyright\&quot;: \&quot;2005\&quot;,\n    \&quot;illustrated\&quot;: false,\n    \&quot;listPrice\&quot;: \&quot;179.40\&quot;,\n    \&quot;title\&quot;: \&quot;Biology\&quot;,\n    \&quot;subtitle\&quot;: null,\n    \&quot;publisherName\&quot;: \&quot;Benjamin-Cummings Publishing Company\&quot;,\n    \&quot;audienceCode\&quot;: \&quot;C\&quot;,\n    \&quot;lcp\&quot;: 4,\n    \&quot;description\&quot;: \&quot;&lt;p&gt;Neil Campbell and Jane Reece&amp;#39;s&lt;b&gt;&lt;i&gt;BIOLOGY&lt;/i&gt;&lt;/b&gt;remains unsurpassed as the most successful majors biology textbook in the world. This text has invited more than 4 million students into the study of this dynamic and essential discipline.The authors have restructured each chapter around a conceptual framework of five or six big ideas. An Overview draws students in and sets the stage for the rest of the chapter, each numbered Concept Head announces the beginning of a new concept, and Concept Check questions at the end of each chapter encourage students to assess their mastery of a given concept.&amp;nbsp;New Inquiry Figures focus students on the experimental process, and new Research Method Figures illustrate important techniques in biology. Each chapter ends with a Scientific Inquiry Question that asks students to apply scientific investigation skills to the content of the chapter.&lt;/p&gt;\&quot;,\n    \&quot;toc\&quot;: null,\n    \&quot;biblioId\&quot;: 1,\n    \&quot;containsExtra\&quot;: true,\n    \&quot;authors\&quot;: \n    [\n        \&quot;Campbell, Neil A.\&quot;,\n        \&quot;Reece, Jane B.\&quot;,\n        \&quot;Urry, Lisa A.\&quot;,\n        \&quot;Heyden, Robin\&quot;,\n        \&quot;Molles, Manuel\&quot;\n    ],\n    \&quot;width\&quot;: 23.5,\n    \&quot;length\&quot;: 28.58,\n    \&quot;height\&quot;: 5.08,\n    \&quot;weight\&quot;: 7.2,\n    \&quot;carton_qty\&quot;: 3,\n    \&quot;binding_1\&quot;: \&quot;WW\&quot;,\n    \&quot;binding_2\&quot;: \&quot;\&quot;,\n    \&quot;media_1\&quot;: \&quot;S\&quot;,\n    \&quot;subCategory\&quot;: 1,\n    \&quot;dac\&quot;: false,\n    \&quot;publishDate\&quot;: \&quot;2004-12-13\&quot;,\n    \&quot;imgWidth80\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width80.jpg\&quot;,\n    \&quot;imgWidth100\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width100.jpg\&quot;,\n    \&quot;imgWidth400\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width400.jpg\&quot;,\n    \&quot;imgWidth144\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width144.jpg\&quot;,\n    \&quot;imgBox60_70\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Box60x70.jpg\&quot;,\n    \&quot;imgWidth288\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width288.jpg\&quot;,\n    \&quot;imgWidth200\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width200.jpg\&quot;,\n    \&quot;imgWidth120\&quot;: \&quot;http://cs.cheggcdn.com/covers2/0/1_1263591603_Width120.jpg\&quot;\n}]\n```\n\n#### Notes\nHaving `logId` of the particular price allows to redirect to chegg.com and have the item with the pricing option corresponding to the log ID placed to a shopping cart. See `Textbook Catalog: Add textbook items to cart` API&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;
+    },
+    {
+      &quot;id&quot;: &quot;b1b1d0f1-de70-6d9b-b7cc-dfcff782236e&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/schools/?q=name:*Stanford*&amp;fields=schoolId,schoolName,schoolBasic.ipedId&amp;f.schoolType=post-secondary&amp;limit=12&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445637030830,
+      &quot;name&quot;: &quot;Schools: Search schools by name&quot;,
+      &quot;description&quot;: &quot;### Get details on schools by name or location or iped ID\n\n#### Parameters\n   * `q` (required): search string, some of the supported formats of the string are:\n      * `name:&lt;school name to search, * is a whildcard&gt;` to search by name\n      * `schoolLocationName:&lt;location name to search, * is a whildcard&gt;` to search by alias\n      * `ipedId:&lt;iped ID&gt;` to search by school IPED ID\n   * `f.schoolType` (optional): school(s) type to search, valid values are `post-secondary` and `high-school`.\n   * `fields` (optional): comma seperated list of the school attributes to be returned. Run the query without this param to see all the possible school attributes. You can also refer to `Schools: Get school info by school ID` API description.\n   * `limit` (optional): how many results per page to return   \n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/schools/?q=name:*ford*&amp;fields=schoolId,schoolName,schoolBasic.ipedId` - All schools with string `ford` in their names. \\* means wildcard. Get basic fields on the schools only.\n\n`https://hackingedu.chegg.com/hacking-edu/schools/?q=schoolLocationName:*California*&amp;limit=2` - Get all data on first 2 schools in California\n\n`https://hackingedu.chegg.com/hacking-edu/schools/?q=ipedId:110662` - School with ipedId 110662 details.\n&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;ccc368c0-bad5-a257-bec8-d699403aaff6&quot;,
+      &quot;headers&quot;: &quot;Accept: application/json\nAuthorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/search?q=biology&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445640853406,
+      &quot;name&quot;: &quot;Search: Textbooks&quot;,
+      &quot;description&quot;: &quot;### Search textbooks by title, author, ISBN, EAN\n\n#### Parameters\n   * `q` (required): search string, results would have that string in one or more main book attributes: title, author, EAN or ISBN\n   * `f.page-number`  (optional, default 1): starting page number to get the results (min value is 1)\n\n#### Sample Usages\n##### Search by title\n`https://hackingedu.chegg.com/hacking-edu/search?q=algorithms`\n\n##### Search by ISBN (supports both ISBN-10 and ISBN-13)\n`https://hackingedu.chegg.com/hacking-edu/search?q=9780321573513`\n\n##### Search by title (2nd page)\n`https://hackingedu.chegg.com/hacking-edu/search?q=algorithms&amp;f.page-number=2`\n\n#### Output section example\n``` \n{\n  \&quot;httpCode\&quot;: 200,\n  \&quot;errors\&quot;: [],\n  \&quot;result\&quot;: [\n    {\n      \&quot;careers\&quot;: null,\n      \&quot;tbs-book\&quot;: {\n        \&quot;responseHeader\&quot;: {\n          \&quot;returnCode\&quot;: 200,\n          \&quot;reasonPhrase\&quot;: \&quot;ok\&quot;,\n          \&quot;queryTime\&quot;: 1,\n          \&quot;elapsedTime\&quot;: 4\n        },\n        \&quot;responseContent\&quot;: {\n          \&quot;limit\&quot;: 4,\n          \&quot;start\&quot;: 0,\n          \&quot;docs\&quot;: [\n            {\n              \&quot;ean\&quot;: \&quot;9780073383071\&quot;,\n              \&quot;id\&quot;: \&quot;LBP-42044766\&quot;,\n              \&quot;authors\&quot;: [\n                \&quot;Raven, Peter\&quot;,\n                \&quot;Johnson, George\&quot;,\n                \&quot;Mason, Kenneth\&quot;,\n                \&quot;Losos, Jonathan\&quot;,\n                \&quot;Singer, Susan\&quot;\n              ],\n              \&quot;edition-no\&quot;: 10,\n              \&quot;author\&quot;: null,\n              \&quot;title\&quot;: \&quot;Biology\&quot;,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;isbn\&quot;: \&quot;0073383074\&quot;,\n              \&quot;subtitle\&quot;: null\n            },\n            {\n              \&quot;ean\&quot;: \&quot;9780321616555\&quot;,\n              \&quot;id\&quot;: \&quot;LBP-20218127\&quot;,\n              \&quot;authors\&quot;: [\n                \&quot;Krogh, David\&quot;\n              ],\n              \&quot;edition-no\&quot;: 5,\n              \&quot;author\&quot;: null,\n              \&quot;title\&quot;: \&quot;Biology\&quot;,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;isbn\&quot;: \&quot;0321616553\&quot;,\n              \&quot;subtitle\&quot;: \&quot;A Guide to the Natural World\&quot;\n            },\n            {\n              \&quot;ean\&quot;: \&quot;9780073525501\&quot;,\n              \&quot;id\&quot;: \&quot;LBP-29182909\&quot;,\n              \&quot;authors\&quot;: [\n                \&quot;Mader, Sylvia S.\&quot;,\n                \&quot;Mader\&quot;,\n                \&quot;Mader, Sylvia\&quot;,\n                \&quot;Windelspecht, Michael\&quot;,\n                \&quot;Windelspecht\&quot;\n              ],\n              \&quot;edition-no\&quot;: 11,\n              \&quot;author\&quot;: null,\n              \&quot;title\&quot;: \&quot;Biology\&quot;,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;isbn\&quot;: \&quot;0073525502\&quot;,\n              \&quot;subtitle\&quot;: null\n            },\n            {\n              \&quot;ean\&quot;: \&quot;9780073532240\&quot;,\n              \&quot;id\&quot;: \&quot;LBP-37349541\&quot;,\n              \&quot;authors\&quot;: [\n                \&quot;Brooker, Robert J.\&quot;,\n                \&quot;Brooker, Robert\&quot;,\n                \&quot;Widmaier, Eric\&quot;,\n                \&quot;Graham, Linda\&quot;,\n                \&quot;Stiling, Peter\&quot;\n              ],\n              \&quot;edition-no\&quot;: 3,\n              \&quot;author\&quot;: null,\n              \&quot;title\&quot;: \&quot;Biology\&quot;,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;isbn\&quot;: \&quot;007353224X\&quot;,\n              \&quot;subtitle\&quot;: null\n            }\n          ],\n          \&quot;numFound\&quot;: 450\n        }\n      },\n      \&quot;textbooks\&quot;: {\n        \&quot;responseHeader\&quot;: {\n          \&quot;returnCode\&quot;: 200,\n          \&quot;reasonPhrase\&quot;: \&quot;ok\&quot;,\n          \&quot;queryTime\&quot;: 1,\n          \&quot;elapsedTime\&quot;: 22\n        },\n        \&quot;responseContent\&quot;: {\n          \&quot;limit\&quot;: 10,\n          \&quot;start\&quot;: 0,\n          \&quot;docs\&quot;: [\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-42044766\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780073383071\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-20218127\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780321616555\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-29182909\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780073525501\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-37349541\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780073532240\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-39547068\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780321794260\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-44777848\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780321735867\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-50318001\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780078024269\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-29182905\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780078096921\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-40466004\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9781285427812\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            },\n            {\n              \&quot;edition-no\&quot;: null,\n              \&quot;isEbook\&quot;: null,\n              \&quot;isBundle\&quot;: null,\n              \&quot;id\&quot;: \&quot;LBP-32484637\&quot;,\n              \&quot;authors\&quot;: null,\n              \&quot;title\&quot;: null,\n              \&quot;listPrice\&quot;: null,\n              \&quot;isbn\&quot;: null,\n              \&quot;otherOptions\&quot;: null,\n              \&quot;hasCourtesyEbook\&quot;: null,\n              \&quot;isDac\&quot;: null,\n              \&quot;hasEbook\&quot;: null,\n              \&quot;image-fn\&quot;: null,\n              \&quot;itemType\&quot;: null,\n              \&quot;priceType\&quot;: null,\n              \&quot;lowPrice\&quot;: null,\n              \&quot;url\&quot;: null,\n              \&quot;ean\&quot;: \&quot;9780321767837\&quot;,\n              \&quot;price\&quot;: null,\n              \&quot;tbsUrl\&quot;: null,\n              \&quot;subtitle\&quot;: null,\n              \&quot;hasTbs\&quot;: null,\n              \&quot;highPrice\&quot;: null,\n              \&quot;isTextbook\&quot;: null,\n              \&quot;imageURL\&quot;: null\n            }\n          ],\n          \&quot;numFound\&quot;: 1287\n        }\n      },\n      \&quot;tutors-subject\&quot;: null,\n      \&quot;logs\&quot;: null,\n      \&quot;questions\&quot;: null,\n      \&quot;tbs-problem\&quot;: null,\n      \&quot;infobox\&quot;: {\n        \&quot;responseHeader\&quot;: {\n          \&quot;returnCode\&quot;: 200,\n          \&quot;reasonPhrase\&quot;: \&quot;ok\&quot;,\n          \&quot;queryTime\&quot;: 0,\n          \&quot;elapsedTime\&quot;: 4\n        },\n        \&quot;responseContent\&quot;: {\n          \&quot;limit\&quot;: 1,\n          \&quot;start\&quot;: 0,\n          \&quot;docs\&quot;: [],\n          \&quot;numFound\&quot;: 0\n        }\n      },\n      \&quot;tutors-tutor\&quot;: null\n    }\n  ]\n}\n```&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;f20f53de-fffc-fd5a-bf18-f20303dc131d&quot;,
+      &quot;headers&quot;: &quot;Authorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/scholarship/{scholarshipID}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445639346241,
+      &quot;name&quot;: &quot;Scholarships: Get scholarship by ID&quot;,
+      &quot;description&quot;: &quot;### Get detailed information about the scholarship\nA simple GET request to fetch detailed scholarship information by a scholarship ID which you can obtain from `Scholarships: Search scholarship by name` API.\n\n#### Parameters\n  * `scholarshipID` (required, last section of the URL)\n\n#### Sample Usage\n`https://hackingedu.chegg.com/hacking-edu/scholarship/40cb12a1-e579-4faa-9794-4c21c2589711`&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;,
+      &quot;responses&quot;: []
+    },
+    {
+      &quot;id&quot;: &quot;f4331f80-cc2f-9edc-a2b4-4d0c8feb2e2c&quot;,
+      &quot;headers&quot;: &quot;Accept: application/json\nContent-Type: application/json\nAuthorization: Basic {{base64encodedString}}\n&quot;,
+      &quot;url&quot;: &quot;https://hackingedu.chegg.com/hacking-edu/catalog/relateditem/priced/getRelatedItems?catalogItemId={catalogItemId}&quot;,
+      &quot;preRequestScript&quot;: &quot;&quot;,
+      &quot;pathVariables&quot;: {},
+      &quot;method&quot;: &quot;GET&quot;,
+      &quot;data&quot;: [],
+      &quot;dataMode&quot;: &quot;params&quot;,
+      &quot;version&quot;: 2,
+      &quot;tests&quot;: &quot;&quot;,
+      &quot;currentHelper&quot;: &quot;normal&quot;,
+      &quot;helperAttributes&quot;: {},
+      &quot;time&quot;: 1445634083897,
+      &quot;name&quot;: &quot;Textbook Catalog: Get related items by item ID&quot;,
+      &quot;description&quot;: &quot;### Find items related to the specified one. \nGives related items IDs and the type of their relation. Possible meaningful relation types are:\n\n   * SUPPLEMENT_ISBN (supplemental materials for the queried one)\n   * DIGITAL_LINKAGE (ebooks related to the given one)\n   * RECOMMENDED_ITEMS (recommeded to get along with the specified one)\n   * OTHER_EDITIONS (other editions of the item)\n   * TEXTBOOK_SOLUTIONS (solutions for the item)\n\n#### Parameters\n   * `catalogItemId` (required): item ID to find related items for\n\n#### Notes\nHaving `catalogItemIdTo` for the related item as a part of the response, additonal details about it can be retrieved by passing related ID to `Textbook Catalog: get by Item ID` call.\n\n#### Sample Usage\nhttps://hackingedu.chegg.com/hacking-edu/catalog/relateditem/priced/getRelatedItems?catalogItemId=LBP-1\n\n#### Response example\nThis is one section (element of the array) of the response\n``` \n{\n    \&quot;catalogItemIdFrom\&quot;: \&quot;LBP-1\&quot;,\n    \&quot;catalogItemIdTo\&quot;: \&quot;LBP-21900767\&quot;,\n    \&quot;createdBy\&quot;: null,\n    \&quot;modifiedBy\&quot;: null,\n    \&quot;createdDate\&quot;: null,\n    \&quot;modifiedDate\&quot;: null,\n    \&quot;catalogItemTypeFrom\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;catalogItemTypeTo\&quot;: \&quot;TEXTBOOK\&quot;,\n    \&quot;relationshipType\&quot;: \&quot;OTHER_EDITIONS\&quot;,\n    \&quot;active\&quot;: true\n}\n```&quot;,
+      &quot;collectionId&quot;: &quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;
+    }
+  ]
+}</pre>
+
+		<p class="file_page_meta no_print" style="line-height: 1.5rem;">
+			<label class="checkbox normal mini float_right no_top_padding no_min_width">
+				<input type="checkbox" id="file_preview_wrap_cb"> wrap long lines
+			</label>
+		</p>
+
+	</div>
+
+	<div id="comments_holder" class="clearfix clear_both">
+	<div class="col span_1_of_6"></div>
+	<div class="col span_4_of_6 no_right_padding">
+		<div id="file_page_comments">
+			<div class="loading_hash_animation">
+	<img src="https://slack.global.ssl.fastly.net/f85a/img/loading_hash_animation_@2x.gif" srcset="https://slack.global.ssl.fastly.net/272a/img/loading_hash_animation.gif 1x, https://slack.global.ssl.fastly.net/f85a/img/loading_hash_animation_@2x.gif 2x" alt="Loading" class="loading_hash" /><br />loading...
+	<noscript>
+		You must enable javascript in order to use Slack :(
+				<style type="text/css">div.loading_hash { display: none; }</style>
+	</noscript>
+</div>		</div>	
+		<form action="https://codingedu.slack.com/files/jenkimm/F0D4XC1QC/chegg-hackingedu-2015-postman.json" 
+		id="file_comment_form" 
+					class="comment_form"
+				method="post">
+			<a href="/team/armand" class="member_preview_link" data-member-id="U0D27TRFU" >
+			<span class="member_image thumb_36" style="background-image: url('https://secure.gravatar.com/avatar/fb0b65022d5754870442e8e44b48b925.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0023-72.png')" data-thumb-size="36" data-member-id="U0D27TRFU"></span>
+		</a>		
+		<input type="hidden" name="addcomment" value="1" />
+	<input type="hidden" name="crumb" value="s-1445778579-70da47b7e5-☃" />
+
+	<textarea id="file_comment" data-el-id-to-keep-in-view="file_comment_submit_btn" class="small comment_input small_bottom_margin autogrow-short" name="comment" wrap="virtual" ></textarea>
+	<span class="input_note float_left cloud_silver file_comment_tip">shift+enter to add a new line</span>	<button id="file_comment_submit_btn" type="submit" class="btn float_right  ladda-button" data-style="expand-right"><span class="ladda-label">Add Comment</span></button>
+</form>
+
+<form
+		id="file_edit_comment_form" 
+					class="edit_comment_form hidden"
+				method="post">
+		<textarea id="file_edit_comment" class="small comment_input small_bottom_margin" name="comment" wrap="virtual"></textarea><br>
+	<span class="input_note float_left cloud_silver file_comment_tip">shift+enter to add a new line</span>	<input type="submit" class="save btn float_right " value="Save" />
+	<button class="cancel btn btn_outline float_right small_right_margin ">Cancel</button>
+</form>	
+	</div>
+	<div class="col span_1_of_6"></div>
+</div>
+</div>
+
+	
+
+		
+	</div>
+	<div id="overlay"></div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+var cdn_url = "https:\/\/slack.global.ssl.fastly.net";
+var inc_js_setup_data = {
+	emoji_sheets: {
+		apple: 'https://slack.global.ssl.fastly.net/66f9/img/emoji_2015/sheet_apple_64_indexed_256colors.png',
+		google: 'https://slack.global.ssl.fastly.net/66f9/img/emoji_2015/sheet_google_64_indexed_128colors.png',
+		twitter: 'https://slack.global.ssl.fastly.net/66f9/img/emoji_2015/sheet_twitter_64_indexed_128colors.png',
+		emojione: 'https://slack.global.ssl.fastly.net/66f9/img/emoji_2015/sheet_emojione_64_indexed_128colors.png',
+	},
+};
+</script>
+			<script type="text/javascript">
+<!--
+	// common boot_data
+	var boot_data = {
+		start_ms: Date.now(),
+		app: 'web',
+		user_id: 'U0D27TRFU',
+		version_ts: '1445753316',
+		version_uid: '0e9380151a6d6ad01c4e3034487109aeb342d192',
+		cache_version: "v11-mouse",
+		cache_ts_version: "v1-cat",
+		redir_domain: 'slack-redir.net',
+		signin_url: 'https://slack.com/signin',
+		abs_root_url: 'https://slack.com/',
+		api_url: '/api/',
+		team_url: 'https://codingedu.slack.com/',
+		image_proxy_url: 'https://slack-imgs.com/',
+		beacon_timing_url: 'https://slack.com/beacon/timing',
+		api_token: 'xoxs-13073246656-13075943538-13075174592-89ea9397e4',
+
+		feature_status: false,
+		feature_archive_viewer: true,
+		
+		notification_sounds: [{"value":"b2.mp3","label":"Ding","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/b2.mp3"},{"value":"animal_stick.mp3","label":"Boing","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/animal_stick.mp3"},{"value":"been_tree.mp3","label":"Drop","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/been_tree.mp3"},{"value":"complete_quest_requirement.mp3","label":"Ta-da","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/complete_quest_requirement.mp3"},{"value":"confirm_delivery.mp3","label":"Plink","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/confirm_delivery.mp3"},{"value":"flitterbug.mp3","label":"Wow","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/flitterbug.mp3"},{"value":"here_you_go_lighter.mp3","label":"Here you go","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/here_you_go_lighter.mp3"},{"value":"hi_flowers_hit.mp3","label":"Hi","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/hi_flowers_hit.mp3"},{"value":"item_pickup.mp3","label":"Yoink","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/item_pickup.mp3"},{"value":"knock_brush.mp3","label":"Knock Brush","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/knock_brush.mp3"},{"value":"save_and_checkout.mp3","label":"Woah!","url":"https:\/\/slack.global.ssl.fastly.net\/dfc0\/sounds\/push\/save_and_checkout.mp3"},{"value":"none","label":"None (sound off)"}],
+		alert_sounds: [{"value":"frog.mp3","label":"Frog","url":"https:\/\/slack.global.ssl.fastly.net\/a34a\/sounds\/frog.mp3"}],
+		call_sounds: [{"value":"call\/alert.mp3","label":"Alert","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/alert.mp3"},{"value":"call\/incoming_ring.mp3","label":"Incoming ring","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/incoming_ring.mp3"},{"value":"call\/outgoing_ring.mp3","label":"Outgoing ring","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/outgoing_ring.mp3"},{"value":"call\/pop.mp3","label":"Incoming reaction","url":"https:\/\/slack.global.ssl.fastly.net\/fa957\/sounds\/call\/pop.mp3"},{"value":"call\/they_left_call.mp3","label":"They left call","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/they_left_call.mp3"},{"value":"call\/you_left_call.mp3","label":"You left call","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/you_left_call.mp3"},{"value":"call\/they_joined_call.mp3","label":"They joined call","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/they_joined_call.mp3"},{"value":"call\/you_joined_call.mp3","label":"You joined call","url":"https:\/\/slack.global.ssl.fastly.net\/b6a68\/sounds\/call\/you_joined_call.mp3"}],
+
+		feature_member_viz_perf: false,
+		feature_message_replies: false,
+		feature_mpim_client: true,
+		feature_new_message_markup: false,
+		feature_ui_reference_v2: false,
+		feature_fs_prefs: false,
+		feature_setactive_use_ms: true,
+		feature_payments_stripe: true,
+		feature_strike: true,
+		feature_show_version_info: false,
+		feature_ephemeral_attachments: false,
+		feature_varietypack_optin: true,
+		feature_deprecate_url_download: false,
+		feature_rxn_skin_tone_modifiers: false,
+		feature_all_skin_tones: false,
+		feature_help_case_feedback: true,
+		feature_spaces: true,
+		feature_pass_the_baton: false,
+		feature_a11y_keyboard_shortcuts: false,
+		feature_email_integration: true,
+		feature_email_ingestion: false,
+		feature_attachments_inline: false,
+		feature_fix_files: true,
+		feature_files_list: true,
+		feature_chat_sounds: false,
+		feature_image_proxy: true,
+		feature_channel_eventlog_client: true,
+		feature_macssb1_banner: true,
+		feature_winssb1_banner: true,
+		feature_winssb_beta_channel: false,
+		feature_macssb_osx_deprecated_banner: false,
+		feature_latest_event_ts: true,
+		feature_elide_closed_dms: false,
+		feature_client_allow_demand_fetching: true,
+		feature_no_redirects_in_ssb: true,
+		feature_referer_policy: true,
+		feature_client_exif_orientation_on_uploads: true,
+		feature_pricing_page_tweet_carousel: true,
+		feature_archived_channels_in_quick_switcher: false,
+		feature_more_field_in_message_attachments: false,
+		feature_user_hidden_msgs: false,
+		feature_file_url_private_conversion: false,
+		feature_screenhero: false,
+		feature_custom_fields: false,
+		feature_integrations_message_preview: false,
+		feature_slash_commands_settings: false,
+		feature_lite_to_free: true,
+		feature_bot_profile: false,
+		feature_two_factor_via_sms: true,
+		feature_two_factor_for_teams: true,
+		feature_slackbot_confirm_signup_email: false,
+		feature_private_channels: false,
+		feature_channel_details: true,
+		feature_filter_select_component: true,
+		feature_subteams: false,
+		feature_subteams_hard_delete: false,
+		feature_less_login_data: true,
+		feature_no_unread_counts: true,
+		feature_web_cache_users: false,
+		feature_slack_command_button_use: false,
+		feature_slack_command_button_create: false,
+		feature_js_raf_queue: false,
+		feature_downloads_enhancements: true,
+		feature_marketing_video_getting_started: true,
+		feature_getvisibletopbanners_performance: false,
+		feature_channel_page_perf: false,
+		feature_shared_channels: false,
+		feature_fast_files_flexpane: false,
+		feature_fewer_files_fetches: false,
+		feature_tab_complete_search_changed: false,
+
+		img: {
+			app_icon: 'https://slack.global.ssl.fastly.net/272a/img/slack_growl_icon.png'
+		},
+		page_needs_custom_emoji: false
+	};
+
+
+
+	// client boot data
+			boot_data.login_data = {"ok":true,"self":{"id":"U0D27TRFU","name":"armand","prefs":{"highlight_words":"","user_colors":"","color_names_in_list":true,"growls_enabled":true,"tz":"America\/Los_Angeles","push_dm_alert":true,"push_mention_alert":true,"push_everything":true,"push_idle_wait":2,"push_sound":"b2.mp3","push_loud_channels":"","push_mention_channels":"","push_loud_channels_set":"","email_alerts":"none","email_alerts_sleep_until":0,"email_misc":true,"email_weekly":true,"welcome_message_hidden":false,"all_channels_loud":true,"loud_channels":"","never_channels":"","loud_channels_set":"","show_member_presence":true,"search_sort":"timestamp","expand_inline_imgs":true,"expand_internal_inline_imgs":true,"expand_snippets":false,"posts_formatting_guide":true,"seen_welcome_2":true,"seen_ssb_prompt":false,"seen_spaces_new_xp_tooltip":false,"spaces_new_xp_banner_dismissed":false,"search_only_my_channels":false,"emoji_mode":"google","emoji_use":"{}","has_invited":true,"has_uploaded":true,"has_created_channel":false,"search_exclude_channels":"","messages_theme":"default","webapp_spellcheck":true,"no_joined_overlays":false,"no_created_overlays":false,"dropbox_enabled":false,"seen_domain_invite_reminder":false,"seen_member_invite_reminder":false,"mute_sounds":false,"arrow_history":false,"tab_ui_return_selects":true,"obey_inline_img_limit":true,"new_msg_snd":"knock_brush.mp3","collapsible":false,"collapsible_by_click":true,"require_at":false,"ssb_space_window":"","mac_ssb_bounce":"","mac_ssb_bullet":true,"expand_non_media_attachments":true,"show_typing":true,"pagekeys_handled":true,"last_snippet_type":"","display_real_names_override":0,"time24":false,"enter_is_special_in_tbt":false,"graphic_emoticons":false,"convert_emoticons":true,"autoplay_chat_sounds":true,"ss_emojis":true,"sidebar_behavior":"","seen_onboarding_start":false,"onboarding_cancelled":false,"seen_onboarding_slackbot_conversation":false,"seen_onboarding_channels":false,"seen_onboarding_direct_messages":false,"seen_onboarding_invites":false,"seen_onboarding_search":false,"seen_onboarding_recent_mentions":false,"seen_onboarding_starred_items":false,"seen_onboarding_private_groups":false,"onboarding_slackbot_conversation_step":0,"mark_msgs_read_immediately":true,"start_scroll_at_oldest":true,"snippet_editor_wrap_long_lines":false,"ls_disabled":false,"sidebar_theme":"monument_theme","sidebar_theme_custom_values":"{\"column_bg\":\"#0D7E83\",\"menu_bg\":\"#076570\",\"active_item\":\"#F79F66\",\"active_item_text\":\"#FFFFFF\",\"hover_item\":\"#D37C71\",\"text_color\":\"#FFFFFF\",\"active_presence\":\"#F79F66\",\"badge\":\"#F15340\"}","f_key_search":false,"k_key_omnibox":true,"speak_growls":false,"mac_speak_voice":"com.apple.speech.synthesis.voice.Alex","mac_speak_speed":250,"comma_key_prefs":false,"at_channel_suppressed_channels":"","push_at_channel_suppressed_channels":"","prompted_for_email_disabling":false,"full_text_extracts":false,"no_text_in_notifications":false,"muted_channels":"","no_macssb1_banner":false,"no_winssb1_banner":false,"no_omnibox_in_channels":false,"k_key_omnibox_auto_hide_count":0,"hide_user_group_info_pane":false,"mentions_exclude_at_user_groups":false,"privacy_policy_seen":true,"search_exclude_bots":false,"fuzzy_matching":false,"load_lato_2":false,"fuller_timestamps":false,"last_seen_at_channel_warning":0,"flex_resize_window":false,"msg_preview":false,"msg_preview_displaces":true,"msg_preview_persistent":true,"emoji_autocomplete_big":false,"winssb_run_from_tray":true,"winssb_window_flash_behavior":"idle","two_factor_auth_enabled":false,"two_factor_type":null,"two_factor_backup_type":null,"mentions_exclude_at_channels":true,"confirm_clear_all_unreads":true,"confirm_user_marked_away":true,"box_enabled":false,"seen_single_emoji_msg":false,"confirm_sh_call_start":true,"preferred_skin_tone":"","show_all_skin_tones":false,"msg_select":"{ \"on\":false, \"single\":true, \"key\":true, \"links\":false, \"hover\":false }","msg_replies":"{ \"overlay\":false }"},"created":1445570883},"team":{"id":"T0D2578KA","name":"CodingEDU","email_domain":"","domain":"codingedu","msg_edit_window_mins":-1,"prefs":{"default_channels":["C0D21FG8L","C0D27LK2M"],"disable_builtin_loading":true,"msg_edit_window_mins":-1,"allow_message_deletion":true,"hide_referers":true,"display_real_names":false,"who_can_at_everyone":"regular","who_can_at_channel":"ra","warn_before_at_channel":"always","who_can_create_channels":"regular","who_can_archive_channels":"regular","who_can_create_groups":"ra","who_can_post_general":"ra","who_can_kick_channels":"admin","who_can_kick_groups":"regular","who_can_create_delete_user_groups":"admin","who_can_edit_user_groups":"admin","retention_type":0,"retention_duration":0,"group_retention_type":0,"group_retention_duration":0,"dm_retention_type":0,"dm_retention_duration":0,"file_retention_type":0,"file_retention_duration":0,"require_at_for_mention":0,"compliance_export_start":0,"auth_mode":"normal","who_can_manage_integrations":"regular"},"icon":{"image_34":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-34.png","image_44":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-44.png","image_68":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-68.png","image_88":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-88.png","image_102":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-102.png","image_132":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/avatars-teams\/ava_0011-132.png","image_default":true},"over_storage_limit":false,"plan":"","profile":[],"over_integrations_limit":true},"latest_event_ts":"1445777979.000000","channels":[{"id":"C0D21FG8L","name":"general","is_channel":true,"created":1445570883,"creator":"U0D27TRFU","is_archived":false,"is_general":true,"has_pins":false,"is_member":true,"members":["U0D24KNUD","U0D27TRFU","U0D285HNE","U0D4T9WGM"],"topic":{"value":"Company-wide announcements and work-based matters","creator":"","last_set":0},"purpose":{"value":"This channel is for team-wide communication and announcements. All team members are in this channel.","creator":"","last_set":0}},{"id":"C0D27LK2M","name":"random","is_channel":true,"created":1445570883,"creator":"U0D27TRFU","is_archived":false,"is_general":false,"has_pins":false,"is_member":true,"members":["U0D24KNUD","U0D27TRFU","U0D285HNE","U0D4T9WGM"],"topic":{"value":"Non-work banter and water cooler conversation","creator":"","last_set":0},"purpose":{"value":"A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.","creator":"","last_set":0}}],"groups":[],"ims":[{"id":"D0D27LK0R","is_im":true,"user":"USLACKBOT","created":1445570883,"has_pins":false,"is_user_deleted":false},{"id":"D0D251DUN","is_im":true,"user":"U0D24KNUD","created":1445572971,"has_pins":false,"is_user_deleted":false},{"id":"D0D25EB4Y","is_im":true,"user":"U0D285HNE","created":1445571252,"has_pins":false,"is_user_deleted":false},{"id":"D0D4U233R","is_im":true,"user":"U0D4T9WGM","created":1445718465,"has_pins":false,"is_user_deleted":false}],"cache_ts":1445778579,"mpims":[],"users":[{"id":"U0D27TRFU","name":"armand","deleted":false,"status":null,"color":"9f69e7","real_name":"","tz":"America\/Los_Angeles","tz_label":"Pacific Daylight Time","tz_offset":-25200,"profile":{"real_name":"","real_name_normalized":"","email":"adeasis10@gmail.com","image_24":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=24&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0023-24.png","image_32":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=32&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0023-32.png","image_48":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0023-48.png","image_72":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F3654%2Fimg%2Favatars%2Fava_0023-72.png","image_192":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=192&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0023-192.png","image_512":"https:\/\/secure.gravatar.com\/avatar\/fb0b65022d5754870442e8e44b48b925.jpg?s=512&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0023-512.png"},"is_admin":true,"is_owner":true,"is_primary_owner":true,"is_restricted":false,"is_ultra_restricted":false,"is_bot":false},{"id":"U0D24KNUD","name":"david_j","deleted":false,"status":null,"color":"e7392d","real_name":"David Jimenez","tz":"America\/Los_Angeles","tz_label":"Pacific Daylight Time","tz_offset":-25200,"profile":{"first_name":"David","last_name":"Jimenez","real_name":"David Jimenez","real_name_normalized":"David Jimenez","email":"davidjosuedjdj@gmail.com","image_24":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=24&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0013-24.png","image_32":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=32&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0013-32.png","image_48":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0013-48.png","image_72":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0013-72.png","image_192":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=192&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0013-192.png","image_512":"https:\/\/secure.gravatar.com\/avatar\/7ed2cae17717786beeea5b6d34b57226.jpg?s=512&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0013-512.png"},"is_admin":false,"is_owner":false,"is_primary_owner":false,"is_restricted":false,"is_ultra_restricted":false,"is_bot":false},{"id":"U0D285HNE","name":"hanaum","deleted":false,"status":null,"color":"4bbe2e","real_name":"Hana Um","tz":"America\/Los_Angeles","tz_label":"Pacific Daylight Time","tz_offset":-25200,"profile":{"first_name":"Hana","last_name":"Um","real_name":"Hana Um","real_name_normalized":"Hana Um","email":"hanau12@gmail.com","image_24":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=24&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0004-24.png","image_32":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=32&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0004-32.png","image_48":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0004-48.png","image_72":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0004-72.png","image_192":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=192&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0004-192.png","image_512":"https:\/\/secure.gravatar.com\/avatar\/b91b61b1b0c2c1ff88a05f8f8cb90f4c.jpg?s=512&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0004-512.png"},"is_admin":false,"is_owner":false,"is_primary_owner":false,"is_restricted":false,"is_ultra_restricted":false,"is_bot":false},{"id":"U0D4T9WGM","name":"jenkimm","deleted":false,"status":null,"color":"3c989f","real_name":"Jennifer Kim","tz":"America\/Los_Angeles","tz_label":"Pacific Daylight Time","tz_offset":-25200,"profile":{"first_name":"Jennifer","last_name":"Kim","real_name":"Jennifer Kim","real_name_normalized":"Jennifer Kim","email":"jenniferxkim@gmail.com","image_24":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=24&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-24.png","image_32":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=32&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-32.png","image_48":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=48&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-48.png","image_72":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F66f9%2Fimg%2Favatars%2Fava_0010-72.png","image_192":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=192&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0010-192.png","image_512":"https:\/\/secure.gravatar.com\/avatar\/284fb978686f9cc8efc444321eb8fdc6.jpg?s=512&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F7fa9%2Fimg%2Favatars%2Fava_0010-512.png"},"is_admin":false,"is_owner":false,"is_primary_owner":false,"is_restricted":false,"is_ultra_restricted":false,"is_bot":false},{"id":"USLACKBOT","name":"slackbot","deleted":false,"status":null,"color":"757575","real_name":"slackbot","tz":null,"tz_label":"Pacific Daylight Time","tz_offset":-25200,"profile":{"first_name":"slackbot","last_name":"","image_24":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/slackbot_24.png","image_32":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/slackbot_32.png","image_48":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/slackbot_48.png","image_72":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/slackbot_72.png","image_192":"https:\/\/slack.global.ssl.fastly.net\/66f9\/img\/slackbot_192.png","image_512":"https:\/\/slack.global.ssl.fastly.net\/7fa9\/img\/slackbot_512.png","real_name":"slackbot","real_name_normalized":"slackbot","email":null},"is_admin":false,"is_owner":false,"is_primary_owner":false,"is_restricted":false,"is_ultra_restricted":false,"is_bot":false}],"version_ts":1445753316,"min_version_ts":1445362656,"cache_version":"v11-mouse","cache_ts_version":"v1-cat","bots":[{"id":"B0D21DJ4B","deleted":false,"name":"gdrive"}]};
+	
+//-->
+</script>			
+		
+		<!-- output_js "core" -->
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/a26f/js/rollup-core_required_libs.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/b0ba/js/rollup-core_required_ts.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/52f4/js/TS.web.js" crossorigin="anonymous"></script>
+
+	<!-- output_js "core_web" -->
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/72f5/js/rollup-core_web.js" crossorigin="anonymous"></script>
+
+	<!-- output_js "secondary" -->
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/b646/js/rollup-secondary_a_required.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/34a3/js/rollup-secondary_b_required.js" crossorigin="anonymous"></script>
+
+		<!-- output_js "regular" -->
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/5070/js/TS.web.comments.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/38e4/js/TS.web.file.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/e26c/js/libs/codemirror.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/9e78/js/codemirror_load.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://slack.global.ssl.fastly.net/dd2e/js/TS.storage_old.js" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+	<!--
+		boot_data.page_needs_custom_emoji = true;
+		
+		boot_data.file = {"id":"F0D4XC1QC","created":1445738090,"timestamp":1445738090,"name":"chegg-hackingedu-2015-postman.json","title":"chegg-hackingedu-2015-postman.json","mimetype":"text\/plain","filetype":"javascript","pretty_type":"JavaScript\/JSON","user":"U0D4T9WGM","editable":true,"size":44390,"mode":"snippet","is_external":false,"external_type":"","is_public":true,"public_url_shared":false,"display_as_bot":false,"username":"","url":"https:\/\/slack-files.com\/files-pub\/T0D2578KA-F0D4XC1QC-95253fad36\/chegg-hackingedu-2015-postman.json","url_download":"https:\/\/slack-files.com\/files-pub\/T0D2578KA-F0D4XC1QC-95253fad36\/download\/chegg-hackingedu-2015-postman.json","url_private":"https:\/\/files.slack.com\/files-pri\/T0D2578KA-F0D4XC1QC\/chegg-hackingedu-2015-postman.json","url_private_download":"https:\/\/files.slack.com\/files-pri\/T0D2578KA-F0D4XC1QC\/download\/chegg-hackingedu-2015-postman.json","permalink":"https:\/\/codingedu.slack.com\/files\/jenkimm\/F0D4XC1QC\/chegg-hackingedu-2015-postman.json","permalink_public":"https:\/\/slack-files.com\/T0D2578KA-F0D4XC1QC-95253fad36","edit_link":"https:\/\/codingedu.slack.com\/files\/jenkimm\/F0D4XC1QC\/chegg-hackingedu-2015-postman.json\/edit","preview":"\n{\n  \"id\": \"7e1e9419-9b70-92de-fa27-4f297e7009e7\",\n  \"name\": \"Chegg APIs - HackingEDU2015\",\n  \"description\": \"Fetch detailed information such as title, author and edition about textbooks or related items. \\nFind related items to a textbook that include recommended books, supplement materials, ebooks and textbook solutions.\",\n  \"order\": [\n    \"ccc368c0-bad5-a257-bec8-d699403aaff6\",\n    \"8e0b0d73-607e-edd7-16ed-e9451ff4b305\",\n    \"0680d7b4-e921-6d85-ad49-897ffe3e5877\",\n    \"f4331f80-cc2f-9edc-a2b4-4d0c8feb2e2c\",","preview_highlight":"\u003Cdiv class=\"CodeMirror cm-s-default CodeMirrorServer\"\u003E\n\u003Cdiv class=\"CodeMirror-code\"\u003E\n\u003Cdiv\u003E\u003Cpre\u003E&#8203;\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E{\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E  \u003Cspan class=\"cm-string\"\u003E&quot;id&quot;\u003C\/span\u003E: \u003Cspan class=\"cm-string\"\u003E&quot;7e1e9419-9b70-92de-fa27-4f297e7009e7&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E  \u003Cspan class=\"cm-string\"\u003E&quot;name&quot;\u003C\/span\u003E: \u003Cspan class=\"cm-string\"\u003E&quot;Chegg APIs - HackingEDU2015&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E  \u003Cspan class=\"cm-string\"\u003E&quot;description&quot;\u003C\/span\u003E: \u003Cspan class=\"cm-string\"\u003E&quot;Fetch detailed information such as title, author and edition about textbooks or related items. \\nFind related items to a textbook that include recommended books, supplement materials, ebooks and textbook solutions.&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E  \u003Cspan class=\"cm-string\"\u003E&quot;order&quot;\u003C\/span\u003E: [\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E    \u003Cspan class=\"cm-string\"\u003E&quot;ccc368c0-bad5-a257-bec8-d699403aaff6&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E    \u003Cspan class=\"cm-string\"\u003E&quot;8e0b0d73-607e-edd7-16ed-e9451ff4b305&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E    \u003Cspan class=\"cm-string\"\u003E&quot;0680d7b4-e921-6d85-ad49-897ffe3e5877&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003Cdiv\u003E\u003Cpre\u003E    \u003Cspan class=\"cm-string\"\u003E&quot;f4331f80-cc2f-9edc-a2b4-4d0c8feb2e2c&quot;\u003C\/span\u003E,\u003C\/pre\u003E\u003C\/div\u003E\n\u003C\/div\u003E\n\u003C\/div\u003E\n","lines":26,"lines_more":16,"channels":["C0D21FG8L"],"groups":[],"ims":[],"comments_count":1,"initial_comment":{"id":"Fc0D511X7A","created":1445738090,"timestamp":1445738090,"user":"U0D4T9WGM","comment":"Chegg API documentation in json"}};
+		boot_data.file.comments = [{"id":"Fc0D511X7A","created":1445738090,"timestamp":1445738090,"user":"U0D4T9WGM","comment":"Chegg API documentation in json"}];
+
+		
+
+		var g_editor;
+
+		$(function(){
+
+			var wrap_long_lines = !!TS.model.code_wrap_long_lines;
+
+			g_editor = CodeMirror(function(elt){
+				var content = document.getElementById("file_contents");
+				content.parentNode.replaceChild(elt, content);
+			}, {
+				value: $('#file_contents').text(),
+				lineNumbers: true,
+				matchBrackets: true,
+				indentUnit: 4,
+				indentWithTabs: true,
+				enterMode: "keep",
+				tabMode: "shift",
+				viewportMargin: Infinity,
+				readOnly: true,
+				lineWrapping: wrap_long_lines
+			});
+
+			$('#file_preview_wrap_cb').bind('change', function(e) {
+				TS.model.code_wrap_long_lines = $(this).prop('checked');
+				g_editor.setOption('lineWrapping', TS.model.code_wrap_long_lines);
+			})
+
+			$('#file_preview_wrap_cb').prop('checked', wrap_long_lines);
+
+			CodeMirror.switchSlackMode(g_editor, "javascript");
+		});
+
+		
+		$('#file_comment').css('overflow', 'hidden').autogrow();
+	//-->
+	</script>
+
+			<script type="text/javascript">TS.boot(boot_data);</script>
+	<!-- slack-www296 / 2015-10-25 06:09:39 / v0e9380151a6d6ad01c4e3034487109aeb342d192 -->
+<style>.color_9f69e7:not(.nuc) {color:#9F69E7;}.color_4bbe2e:not(.nuc) {color:#4BBE2E;}.color_e7392d:not(.nuc) {color:#E7392D;}.color_3c989f:not(.nuc) {color:#3C989F;}.color_674b1b:not(.nuc) {color:#674B1B;}.color_e96699:not(.nuc) {color:#E96699;}.color_e0a729:not(.nuc) {color:#E0A729;}.color_684b6c:not(.nuc) {color:#684B6C;}.color_5b89d5:not(.nuc) {color:#5B89D5;}.color_2b6836:not(.nuc) {color:#2B6836;}.color_99a949:not(.nuc) {color:#99A949;}.color_df3dc0:not(.nuc) {color:#DF3DC0;}.color_4cc091:not(.nuc) {color:#4CC091;}.color_9b3b45:not(.nuc) {color:#9B3B45;}.color_d58247:not(.nuc) {color:#D58247;}.color_bb86b7:not(.nuc) {color:#BB86B7;}.color_5a4592:not(.nuc) {color:#5A4592;}.color_db3150:not(.nuc) {color:#DB3150;}.color_235e5b:not(.nuc) {color:#235E5B;}.color_9e3997:not(.nuc) {color:#9E3997;}.color_53b759:not(.nuc) {color:#53B759;}.color_c386df:not(.nuc) {color:#C386DF;}.color_385a86:not(.nuc) {color:#385A86;}.color_a63024:not(.nuc) {color:#A63024;}.color_5870dd:not(.nuc) {color:#5870DD;}.color_ea2977:not(.nuc) {color:#EA2977;}.color_50a0cf:not(.nuc) {color:#50A0CF;}.color_d55aef:not(.nuc) {color:#D55AEF;}.color_d1707d:not(.nuc) {color:#D1707D;}.color_43761b:not(.nuc) {color:#43761B;}.color_e06b56:not(.nuc) {color:#E06B56;}.color_8f4a2b:not(.nuc) {color:#8F4A2B;}.color_902d59:not(.nuc) {color:#902D59;}.color_de5f24:not(.nuc) {color:#DE5F24;}.color_a2a5dc:not(.nuc) {color:#A2A5DC;}.color_827327:not(.nuc) {color:#827327;}.color_3c8c69:not(.nuc) {color:#3C8C69;}.color_8d4b84:not(.nuc) {color:#8D4B84;}.color_84b22f:not(.nuc) {color:#84B22F;}.color_4ec0d6:not(.nuc) {color:#4EC0D6;}.color_e23f99:not(.nuc) {color:#E23F99;}.color_e475df:not(.nuc) {color:#E475DF;}.color_619a4f:not(.nuc) {color:#619A4F;}.color_a72f79:not(.nuc) {color:#A72F79;}.color_7d414c:not(.nuc) {color:#7D414C;}.color_aba727:not(.nuc) {color:#ABA727;}.color_965d1b:not(.nuc) {color:#965D1B;}.color_4d5e26:not(.nuc) {color:#4D5E26;}.color_dd8527:not(.nuc) {color:#DD8527;}.color_bd9336:not(.nuc) {color:#BD9336;}.color_e85d72:not(.nuc) {color:#E85D72;}.color_dc7dbb:not(.nuc) {color:#DC7DBB;}.color_bc3663:not(.nuc) {color:#BC3663;}.color_9d8eee:not(.nuc) {color:#9D8EEE;}.color_8469bc:not(.nuc) {color:#8469BC;}.color_73769d:not(.nuc) {color:#73769D;}.color_b14cbc:not(.nuc) {color:#B14CBC;}</style>
+</body>
+</html>

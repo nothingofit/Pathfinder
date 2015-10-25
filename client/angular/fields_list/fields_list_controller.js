@@ -1,25 +1,25 @@
 app.controller("fieldsListController", function($scope, $location){
 
-  var selectedFields = [];
+  $scope.selectedFields = [];
   $scope.shownFields = "";
 
   function refreshShownFields() {
     var shownFieldsTemp = "";
-    for(var i = 0; i < selectedFields.length; i++) {
-      shownFieldsTemp += selectedFields[i]+'&';
+    for(var i = 0; i < $scope.selectedFields.length; i++) {
+      shownFieldsTemp += $scope.selectedFields[i]+'&';
     }
     $scope.shownFields = shownFieldsTemp.substring(0, shownFieldsTemp.length - 1);
   }
 
   $scope.addSelectedField = function(field){
 
-    var indexOfField = selectedFields.indexOf(field);
+    var indexOfField = $scope.selectedFields.indexOf(field);
     if(indexOfField === -1){
-      selectedFields.push(field);  
+      $scope.selectedFields.push(field);  
     } else {
-      selectedFields.splice(indexOfField, 1);
+      $scope.selectedFields.splice(indexOfField, 1);
     }
-
+    $scope.$apply;
     refreshShownFields();
   }
 

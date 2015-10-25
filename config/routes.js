@@ -7,6 +7,9 @@ var cpsConn = new cps.Connection(  'tcps://cloud-us-0.clusterpoint.com:9008', 'h
 // Debug
 cpsConn.debug = true;
 
+// Chegg Controller
+var Chegg = require("../server/controllers/chegg_controller.js");
+
 module.exports = function(app) {
 	app.post('/user/find', function(req, res){
 
@@ -28,7 +31,8 @@ module.exports = function(app) {
 			   res.json(req.body);
 		   }
 		});
-	})
+
+	});
 	app.post('/user/findOne', function(req, res){
 
 		console.log(req.body);
@@ -48,5 +52,15 @@ module.exports = function(app) {
 
 		});
 
-	})
+	});
+
+	app.get('/chegg/title_search/:title', function(req,res){
+		Chegg.titleSearch(req,res);
+	});
+
+	app.get('/chegg/ean_search/:ean', function(req,res){
+		Chegg.eanSearch(req,res);
+	});
+
+
 }
