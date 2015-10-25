@@ -16,8 +16,9 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/positions_list/positions_list.html',
       controller: 'positionsListController'
     })
-    .when('/editprofile', {
-      templateUrl: '/angular/edit_profile/editprofile.html'
+    .when('/users/:id/edit', {
+      templateUrl: '/angular/edit_profile/editprofile.html',
+      controller: 'editProfileController'
     })
     .when('/positions/:career/:company', {
       templateUrl: '/angular/job_profile/jobprofile.html',
@@ -39,15 +40,16 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/company_profile/companyprofile.html',
       controller: 'companyProfileController'
     })
-    .when('/userprofile', {
+    .when('/users/:id', {
       templateUrl: '/angular/user_profile/userprofile.html'
     })
     .when('/login', {
       templateUrl: 'angular/login/login.html',
       controller: 'loginController'
     })
-    .when('/createcompany', {
-      templateUrl: '/angular/create_company/createcompany.html'
+    .when('/create_company', {
+      templateUrl: '/angular/create_company/createcompany.html',
+      controller: 'createCompanyController'
     })
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'

@@ -9,25 +9,25 @@
 <div class="container">
     <div class="row">
         <h1 class="text-center">Company Profile</h1>
-        <h3 class="text-center">Creating your company profile is as easy as...</h3>
+        <h3 class="text-center">Registering your company is as easy as...</h3>
         <table id="company-profile-form" class="col-sm-5 col-sm-offset-4">
             <tr class="company-profile-info">
                 <td>1. Company Name: </td>
-                <td><input type="text" ></td>
+                <td><input type="text" ng-model="newCompany['name']"></td>
             </tr>
             <tr class="company-profile-info">
                 <td>2. Company Description: </td>
-                <td><textarea ></textarea></td>
+                <td><textarea ng-model="newCompany['description']"></textarea></td>
             </tr>
             <tr class="company-profile-info">
                 <td>3. Logo URL: </td>
-                <td><input type="text" placeholder="http://" ></td>
+                <td><input type="text" placeholder="http://" ng-model="newCompany['logo_url']"></td>
             </tr>
             <tr class="company-profile-info">
                 <td>(optional) Location: </td>
-                <td><input type="text" placeholder="city, state, country"></td>
+                <td><input type="text" placeholder="city, state, country, etc." ng-model="newCompany['location']"></td>
             </tr>
         </table>
     </div>
-    <button class="col-sm-offset-6 btn btn-warning">Submit!</button>
+    <button class="col-sm-offset-6 btn btn-warning" ng-click="registerNewCompany(newCompany)">Submit!</button>
 </div>
