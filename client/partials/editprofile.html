@@ -1,0 +1,61 @@
+<nav id="edit-navbar" class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <ul>
+        <li><button class="btn btn-warning">Logout</button></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+    <h1>Please edit your profile</h1>
+    <div id="form-info" class="row">
+        <div class="col-sm-12">
+            <h3>General Information</h3>
+            <p class="form-cats">First Name: <input type="text" ng-model="editProfile.first_name"></p>
+            <p class="form-cats">Last Name: <input type="text" ng-model="editProfile.last_name"></p>
+            <p class="form-cats">Phone Number: <input type="text" ng-model="editProfile.phone"></p>
+            <p class="form-cats">Email: <input type="email" ng-model="editProfile.email"></p>
+            <p class="form-cats">Professional Profile Link: <input type="url" ng-model="editProfile.profile"></p>
+            <p class="form-cats">Portfolio Link: <input type="url" ng-model="editProfile.portfolio"></p>
+            <p class="form-cats">Short Description: <input type="text" ng-model="editProfile.description"></p>
+            <p class="form-cats">Portfolio Link: <input type="url" ng-model="editProfile.portfolio"></p>
+            <p class="form-cats">Portfolio Link: <input type="url" ng-model="editProfile.portfolio"></p>
+        </div>
+
+        <div class="col-sm-12">
+            <h3>Education</h3>
+            <p class="form-cats">College/University: <input type="text" ng-model="editProfile.college"></p>
+            <p class="form-cats">Highschool: <input type="text" ng-model="editProfile.highschool"></p>
+        </div>
+
+        <div class="col-sm-12">
+            <h3>Numbers</h3>
+            <p class="form-cats">GPA: <input type="text" ng-model="editProfile.gpa"></p>
+            <p class="form-cats">ACT: <input type="text" ng-model="editProfile.act"></p>
+            <p class="form-cats">SAT: <input type="text" ng-model="editProfile.sat"></p>
+        </div>
+        <div class="col-sm-12">
+            <h3>Work Experience</h3>
+            <p><strong>Job 1</strong></p>
+            <p class="form-cats">Job Position: <input type="text" ng-model="editProfile.position"></p>
+            <p class="form-cats">Company/Institution: <input type="text" ng-model="editProfile.company"></p>
+            <p class="form-cats">Separate job duties with colons (ex: data analysis everyday: PCR simulations: etc)<textarea type="text" ng-model="editProfile.duties"></textarea></p>
+            <p><strong>Job 2</strong></p>
+            <p class="form-cats">Job Position: <input type="text" ng-model="editProfile.position"></p>
+            <p class="form-cats">Company/Institution: <input type="text" ng-model="editProfile.company"></p>
+            <p class="form-cats">Separate job duties with colons (ex: data analysis everyday: PCR simulations: etc)<textarea type="text" ng-model="editProfile.duties"></textarea></p>
+            <p><strong>Job 3</strong></p>
+            <p class="form-cats">Job Position: <input type="text" ng-model="editProfile.position"></p>
+            <p class="form-cats">Company/Institution: <input type="text" ng-model="editProfile.company"></p>
+            <p class="form-cats">Separate job duties with colons (ex: data analysis everyday: PCR simulations: etc)<textarea type="text" ng-model="editProfile.duties"></textarea></p>
+        </div>
+
+        <div class="col-sm-12">
+            <h3>Skills</h3>
+            <p>Please separate with commas (ex: C++, Java, Python, etc)</p>
+            <p class="form-cats"><textarea type="text" ng-model="editProfile.skills"></textarea></p>
+
+        </div>
+        <button class="btn btn-success">Create Your Profile</button>
+    </div>
+
+</div>

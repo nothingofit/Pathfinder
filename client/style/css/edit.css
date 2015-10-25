@@ -1,0 +1,10 @@
+#edit-navbar {
+    padding: 20px;
+}
+    #edit-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #edit-navbar li {
+        display: inline-block;
+    }

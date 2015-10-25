@@ -13,6 +13,9 @@ app.config( function ($routeProvider) {
     .when('/view', {
       templateUrl: '/partials/view.html'
     })
+    .when('/editprofile', {
+      templateUrl: '/partials/editprofile.html'
+    })
     .otherwise({
       redirectTo: '/'
     });
