@@ -1,0 +1,16 @@
+#createcompany-navbar {
+    padding: 20px;
+}
+    #createcompany-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #createcompany-navbar li {
+        display: inline-block;
+    }
+#company-profile-form {
+    margin-top: 3%;
+}
+tr.company-profile-info {
+    height: 60px;
+}

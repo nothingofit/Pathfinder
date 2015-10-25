@@ -30,6 +30,9 @@ app.config( function ($routeProvider) {
       templateUrl: 'angular/login/login.html',
       controller: 'loginController'
     })
+    .when('/createcompany', {
+      templateUrl: '/angular/create_company/createcompany.html'
+    })
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'
     })
