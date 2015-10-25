@@ -1,5 +1,5 @@
 {
-  "name": "chooseToLearn",
+  "name": "pathFinder",
   "description": "HackingEDU hackathon project",
   "dependencies": {
     "body-parser": "^1.13.2",
