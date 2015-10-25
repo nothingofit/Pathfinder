@@ -1,0 +1,26 @@
+#skillprofile-navbar {
+    padding: 20px;
+}
+    #skillprofile-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #skillprofile-navbar li {
+        display: inline-block;
+    }
+#scrollbar-book-list {
+    border: 1px solid silver;
+    padding: 10px;
+    height: 300px;
+    overflow: scroll;
+}
+    #scrollbar-book-list ul{
+        padding: 0;
+    }
+    li.book-info {
+        list-style-type: none;
+        border-bottom: 1px solid silver;
+    }
+li.courses-link {
+    list-style-type: none;
+}
