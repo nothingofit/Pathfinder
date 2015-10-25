@@ -8,10 +8,10 @@
 </nav>
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Facebook, Inc.</h1>
+        <h1 class="text-center" ng-bind="company"></h1>
         <h4 class="text-center">Menlo Park, CA</h4>
         <div id="company-description-info" class="col-sm-6 col-sm-offset-3">
-            <p>Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel, qui nobis tantas molestie no. Ea ignota evertitur vim, per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate. Vidisse nusquam praesent vim te Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel, qui nobis tantas molestie no. Ea ignota evertitur vim, per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate. Vidisse nusquam praesent vim te</p>
+            <p>Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel, qui nobis tantas molestie no. Ea ignota evertitur vim, per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate.</p>
             <div class="company-info-specs">
                 <h3><strong>Careers</strong></h3>
                 <ul>
@@ -20,7 +20,7 @@
                     <li><a href="#"> Database Engineer</a></li>
                     <li><a href="#">Data Scientist</a></li>
                 </ul>
-                <button class="btn btn-warning">Add a Career</button>
+                <a class="btn btn-warning" ng-href="#/companies/{{company}}/add_career">Add a Career</a>
             </div>
             <div class="company-info-specs">
                 <h3><strong>Open Positions</strong></h3>
@@ -29,7 +29,7 @@
                     <li><a>Front-End Web Developer</a></li>
                     <li><a>UX Developer</a></li>
                 </ul>
-                <button class="btn btn-warning">Manage Open Listings</button>
+                <a class="btn btn-warning" ng-href="#/companies/{{company}}/manage_listings">Manage Open Listings</a>
             </div>
         </div>
 

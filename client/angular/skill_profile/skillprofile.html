@@ -8,13 +8,15 @@
 </nav>
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Angular JS</h1>
+        <h1 class="text-center" ng-bind="skill"></h1>
+        <br>
         <div id="skill-description-info" class="col-sm-6 col-sm-offset-3">
-            <p>Skill Description blha blah blah Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel, qui nobis tantas molestie no. Ea ignota evertitur vim, per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate. Vidisse nusquam praesent vim te.</p><p>Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel, qui nobis tantas molestie no. Ea ignota evertitur vim, per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate. Vidisse nusquam praesent vim te.</p>
+            <p>Skill Description blha blah blah Lorem ipsum dolor sit amet, ea sed enim meis deterruisset. His molestie molestiae ullamcorper ei, ne assum epicurei mel.</p>
+            <p>Per eu consul intellegebat. Meliore maluisset nec et. Clita discere interesset mei te, sea eu tation maluisset vulputate. Vidisse nusquam praesent vim te.</p>
 
             <h3 class="text-center">Resources</h3>
             <div>
-                <p class="text-center">Books on Angular</p>
+                <p class="text-center" ng-bind="'Books on ' + skill"></p>
                 <div id="scrollbar-book-list">
                     <ul>
                         <li class="book-info">Learning AngularJS <p>Dayley, Brad</p></li>
@@ -36,7 +38,7 @@
                 <p>Know of a good course?<a href="#"> Suggest it here!</a></p>
             </div>
             <div class="text-center">
-                <h2><a href="#">Positions that use AngularJS</a></h2>
+                <h2><a ng-href="#/{{skill}}/positions" ng-bind="'Positions That Use ' + skill" ng-href='#'></a></h2>
             </div>
         </div>
 
