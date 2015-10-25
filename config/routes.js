@@ -62,5 +62,4 @@ module.exports = function(app) {
 		Chegg.eanSearch(req,res);
 	});
 
-
 }
