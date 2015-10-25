@@ -8,17 +8,17 @@
 #view-navbar li {
     display: inline-block;
 }
-#view-listings {
+.view-listings {
    padding: 20px;
    margin-bottom: 5%;
 }
-#view-listings a{
+.view-listings a{
     font-size: 1.4em;
     margin-top: 10px;
     padding: 10px 60px 60px 60px;
     background-color: #99E6FF;
     border-radius: 10%;
 }
-#view-listings .job-link:hover {
+.view-listings .job-link:hover {
     background-color: white;
 }

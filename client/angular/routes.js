@@ -8,17 +8,20 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/fields_list/fields.html',
       controller: 'fieldsListController'
     })
-    .when('/choose', {
-      templateUrl: '/angular/careers_list/careers_list.html'
+    .when('/careers_list/:fields', {
+      templateUrl: '/angular/careers_list/careers_list.html',
+      controller: 'careersListController'
     })
-    .when('/view', {
-      templateUrl: '/angular/view_jobs_available/view.html'
+    .when('/careers/:career', {
+      templateUrl: '/angular/positions_list/positions_list.html',
+      controller: 'positionsListController'
     })
     .when('/editprofile', {
       templateUrl: '/angular/edit_profile/editprofile.html'
     })
-    .when('/jobprofile', {
-      templateUrl: '/angular/job_profile/jobprofile.html'
+    .when('/positions/:career/:company', {
+      templateUrl: '/angular/job_profile/jobprofile.html',
+      controller: 'jobProfileController'
     })
     .when('/skillprofile', {
       templateUrl: '/angular/skill_profile/skillprofile.html'
