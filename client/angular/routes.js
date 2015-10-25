@@ -26,6 +26,9 @@ app.config( function ($routeProvider) {
     .when('/companyprofile', {
       templateUrl: '/angular/company_profile/companyprofile.html'
     })
+    .when('/addcareer', {
+      templateUrl: '/angular/add_career/addcareer.html'
+    })
     .when('/login', {
       templateUrl: 'angular/login/login.html',
       controller: 'loginController'

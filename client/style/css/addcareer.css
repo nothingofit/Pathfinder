@@ -1,0 +1,10 @@
+#addcareer-navbar {
+    padding: 20px;
+}
+    #addcareer-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #addcareer-navbar li {
+        display: inline-block;
+    }
