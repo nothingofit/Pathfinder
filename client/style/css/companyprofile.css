@@ -1,0 +1,18 @@
+#companyprofile-navbar {
+    padding: 20px;
+}
+    #companyprofile-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #companyprofile-navbar li {
+        display: inline-block;
+    }
+div.company-info-specs {
+    border: 1px solid silver;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 2%;
+}
+div.company-info-specs a {
+    display: block;
+}
