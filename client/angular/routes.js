@@ -26,8 +26,9 @@ app.config( function ($routeProvider) {
     .when('/companyprofile', {
       templateUrl: '/angular/company_profile/companyprofile.html'
     })
-    .when('/loginSuccess', {
-      templateUrl: '/partials/success.html'
+    .when('/login', {
+      templateUrl: 'angular/login/login.html',
+      controller: 'loginController'
     })
     .when('/loginSuccess', {
       templateUrl: '/partials/success.html'
