@@ -23,17 +23,21 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/job_profile/jobprofile.html',
       controller: 'jobProfileController'
     })
-    .when('/skillprofile', {
-      templateUrl: '/angular/skill_profile/skillprofile.html'
+    .when('/skills/:skill', {
+      templateUrl: '/angular/skill_profile/skillprofile.html',
+      controller: 'skillProfileController'
     })
-    .when('/companyprofile', {
-      templateUrl: '/angular/company_profile/companyprofile.html'
+    .when('/companies/:company/add_career', {
+      templateUrl: '/angular/add_career/addcareer.html',
+      controller: 'addCareerController'
     })
-    .when('/addcareer', {
-      templateUrl: '/angular/add_career/addcareer.html'
+    .when('/companies/:company/manage_listings', {
+      templateUrl: '/angular/manage_listings/managelistings.html',
+      controller: 'manageListingsController'
     })
-    .when('/managelistings', {
-      templateUrl: '/angular/manage_listings/managelistings.html'
+    .when('/companies/:company', {
+      templateUrl: '/angular/company_profile/companyprofile.html',
+      controller: 'companyProfileController'
     })
     .when('/userprofile', {
       templateUrl: '/angular/user_profile/userprofile.html'
