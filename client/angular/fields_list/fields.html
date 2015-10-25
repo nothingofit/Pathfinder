@@ -11,43 +11,44 @@
     <div class="row">
         <div class="col-sm-12 col-lg-12 text-center">
             <h1>Select Your Field(s)</h1>
+            <div ng-bind="shownFields"></div>
         </div>
         <div id="field-options" class="row text-center">
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <a class="list-group-item">Biology</a>
-                    <a class="list-group-item">Chemistry</a>
-                    <a class="list-group-item">Physics</a>
-                    <a class="list-group-item">Engineering</a>
+                    <li ng-click="addSelectedField('biology')" class="list-group-item">Biology</li>
+                    <li ng-click="addSelectedField('chemistry')" class="list-group-item">Chemistry</li>
+                    <li class="list-group-item">Physics</li>
+                    <li class="list-group-item">Engineering</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <a class="list-group-item">Health Services</a>
-                    <a class="list-group-item">Medical Technology</a>
-                    <a class="list-group-item">Accounting</a>
-                    <a class="list-group-item">Business Management</a>
+                    <li class="list-group-item">Health Services</li>
+                    <li class="list-group-item">Medical Technology</li>
+                    <li class="list-group-item">Accounting</li>
+                    <li class="list-group-item">Business Management</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <a class="list-group-item">Education</a>
-                    <a class="list-group-item">Food Services</a>
-                    <a class="list-group-item">Sports Management</a>
-                    <a class="list-group-item">Higher Education</a>
+                    <li class="list-group-item">Education</li>
+                    <li class="list-group-item">Food Services</li>
+                    <li class="list-group-item">Sports Management</li>
+                    <li class="list-group-item">Higher Education</li>
                 </ul>
             </div>
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
-                    <a class="list-group-item">Research</a>
-                    <a class="list-group-item">Computer Science</a>
-                    <a class="list-group-item">Web Development</a>
-                    <a class="list-group-item">Stage Management</a>
+                    <li class="list-group-item">Research</li>
+                    <li class="list-group-item">Computer Science</li>
+                    <li class="list-group-item">Web Development</li>
+                    <li class="list-group-item">Stage Management</li>
                 </ul>
             </div>
         </div>
         <div class="col-lg-12 text-center">
-            <button class="btn btn-warning">Submit</button>
+            <button ng-click="submitFields()" class="btn btn-warning">Submit</button>
         </div>
     </div>
 </div>
