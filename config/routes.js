@@ -1,41 +1,42 @@
-var http = require('http');
+//Includes
+var cps = require('cps-api');
+
+//Creating a CPS connection
+var cpsConn = new cps.Connection(  'tcps://cloud-us-0.clusterpoint.com:9008', 'hackingEDU', 'davidjosuejimenez@hotmail.com', 'codingDojoN', 'document', 'document/id', {account: 102323});
+
+// Debug
+cpsConn.debug = true;
 
 module.exports = function(app) {
 	app.post('/user/find', function(req, res){
+
+		String.prototype.hashCode = function() {
+		  var hash = 0, i, chr, len;
+		  if (this.length == 0) return hash;
+		  for (i = 0, len = this.length; i < len; i++) {
+		    chr   = this.charCodeAt(i);
+		    hash  = ((hash << 5) - hash) + chr;
+		    hash |= 0; // Convert to 32bit integer
+		  }
+		  return hash;
+		};
+
 		console.log(req.body)
-		var options = {
-			host: 'api-us.clusterpoint.com',
-			path: '/v4/102323/hackingEDU/_query',
-			// content: {
-			// 	"username": req.body.username,
-			// 	"password": req.body.passsword
-			// },
-			data: "SELECT * FROM hackingEDU",
-			method: 'POST',
-			dataType: 'json',
-			// Authorization: "Basic ZGF2aWRqb3N1ZWppbWVuZXpAaG90bWFpbC5jb206Y29kaW5nRG9qb04="
-			headers: {'Authorization': 'Basic ZGF2aWRqb3N1ZWppbWVuZXpAaG90bWFpbC5jb206Y29kaW5nRG9qb04='}
-		}
-
-		var callback = function(response) {
-		  var str;
-
-		  //another chunk of data has been recieved, so append it to `str`
-		  response.on('data', function (chunk) {
-		    str += chunk;
-		  });
-
-		  //the whole response has been recieved, so we just print it out here
-		  response.on('end', function () {
-		    console.log(str);
-			console.log("after responding with JSON")
-			res.json({"hopefully": "It worked"});
-			console.log("after resoponding with JSON");
-		  });
-		}
-
-		http.request(options, callback).end();
-
-		console.log("This should not run. last")
+		// Insert
+		var obj = {
+		   id: req.body.username,
+		   name: req.body.name,
+		   password: req.body.password,
+		   date: new Date()
+		};
+		var documents = [obj];
+		cpsConn.sendRequest(new cps.InsertRequest(documents), function (err, resp) {
+		   if (err) {
+			    console.error(err); // Handle error
+				res.json({"error": "Error from db"});
+		   } else {
+			   res.json(req.body);
+		   }
+		});
 	})
 }
