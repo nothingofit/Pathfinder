@@ -5,10 +5,11 @@ app.config( function ($routeProvider) {
       templateUrl: '/angular/homepage/main.html'
     })
     .when('/fields', {
-      templateUrl: '/angular/fields_list/fields.html'
+      templateUrl: '/angular/fields_list/fields.html',
+      controller: 'fieldsListController'
     })
     .when('/choose', {
-      templateUrl: '/angular/choose_position/choose.html'
+      templateUrl: '/angular/careers_list/careers_list.html'
     })
     .when('/view', {
       templateUrl: '/angular/view_jobs_available/view.html'
