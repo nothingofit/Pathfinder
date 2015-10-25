@@ -4,6 +4,7 @@
   "dependencies": {
     "body-parser": "^1.13.2",
     "connect-flash": "^0.1.1",
+    "cps-api": "0.0.11",
     "express": "~4.10.0",
     "express-session": "^1.11.3",
     "mongoose": "^4.1.1",
