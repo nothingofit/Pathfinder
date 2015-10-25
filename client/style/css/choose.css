@@ -1,0 +1,30 @@
+#choose-navbar {
+    padding: 20px;
+}
+    #choose-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #choose-navbar li {
+        display: inline-block;
+    }
+#chosen-fields {
+    padding: 10px;
+    background-color: #FF9933;
+    border-radius: 3%;
+}
+#position-options {
+    padding-left: 5%;
+}
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
+.position-div {
+    height: 400px;
+    border: 1px solid silver;
+    border-radius: 3%;
+}

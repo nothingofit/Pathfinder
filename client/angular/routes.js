@@ -1,5 +1,4 @@
 var app = angular.module('app', ['ngRoute']);
-console.log("HI");
 app.config( function ($routeProvider) {
   $routeProvider
     .when('/', {
@@ -7,6 +6,9 @@ app.config( function ($routeProvider) {
     })
     .when('/fields', {
       templateUrl: '/partials/fields.html'
+    })
+    .when('/choose', {
+      templateUrl: '/partials/choose.html'
     })
     .otherwise({
       redirectTo: '/'
