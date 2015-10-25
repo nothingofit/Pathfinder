@@ -8,3 +8,11 @@
     #jobprofile-navbar li {
         display: inline-block;
     }
+div.job-info-specs {
+    border: 1px solid silver;
+    padding: 0 10px 10px 10px;
+    margin-bottom: 2%;
+}
+div.job-info-specs a {
+    display: block;
+}
