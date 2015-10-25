@@ -1,0 +1,27 @@
+#managelistings-navbar {
+    padding: 20px;
+}
+    #managelistings-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #managelistings-navbar li {
+        display: inline-block;
+    }
+#listing-table {
+    border: 1px solid silver;
+}
+tr.listings-info {
+    height: 60px;
+
+}
+tr.listings-info td{
+    width: 100px;
+    padding-left: 5px;
+    border: 1px solid silver;
+}
+tr.listings-info th{
+    width: 60px;
+    padding-left: 5px;
+    border: 1px solid silver;
+}

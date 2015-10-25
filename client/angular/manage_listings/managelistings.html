@@ -1,0 +1,71 @@
+<nav id="managelistings-navbar" class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <ul>
+            <li><button class="btn btn-warning">Logout</button></li>
+            <li><button class="btn btn-warning">Your Profile</button></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Manage Open Listings</h1>
+        <div class="col-sm-6 col-sm-offset-3">
+            <table class="text-center" id="listing-table">
+                <tr class="listings-info">
+                    <th>Position Title</th>
+                    <th>Date Posted</th>
+                    <th>Location</th>
+                    <th>Application Instructions</th>
+                    <th>Position Details</th>
+                    <th>Manage</th>
+                </tr>
+                <tr class="listings-info">
+                    <td>Front-End Web Developer</td>
+                    <td>2015-10-23</td>
+                    <td>Menlo Park</td>
+                    <td>http://facebook.com/careers</td>
+                    <td>description</td>
+                    <td><a href="#">Edit</a><a href="#">Remove</a></td>
+                </tr>
+                <tr class="listings-info">
+                    <td>Data Scientist</td>
+                    <td>2015-10-23</td>
+                    <td>Menlo Park</td>
+                    <td>http://facebook.com/careers</td>
+                    <td>description</td>
+                    <td><a href="#">Edit</a><a href="#">Remove</a></td>
+                </tr>
+                <tr class="listings-info">
+                    <td>UX Developer</td>
+                    <td>2015-10-23</td>
+                    <td>Menlo Park</td>
+                    <td>http://facebook.com/careers</td>
+                    <td>description</td>
+                    <td><a href="#">Edit</a><a href="#">Remove</a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-12">
+            <h3 class="text-center">Post New Listing</h3>
+            <table id="company-profile-form" class="col-sm-5 col-sm-offset-4">
+                <tr class="company-profile-info">
+                    <td>Career Title: </td>
+                    <td><input type="text" ></td>
+                </tr>
+                <tr class="company-profile-info">
+                    <td>Description: </td>
+                    <td><textarea ></textarea></td>
+                </tr>
+                <tr class="company-profile-info">
+                    <td>Minimum Requirements:</td>
+                    <td><textarea placeholder="(separate by semicolons)"></textarea></td>
+                </tr>
+                <tr class="company-profile-info">
+                    <td>Desired Skills:</td>
+                    <td><textarea placeholder="(separate by semicolons)"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <button class="col-sm-offset-6 btn btn-warning">Submit!</button>
+</div>
