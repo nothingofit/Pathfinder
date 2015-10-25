@@ -1,0 +1,10 @@
+#jobprofile-navbar {
+    padding: 20px;
+}
+    #jobprofile-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #jobprofile-navbar li {
+        display: inline-block;
+    }

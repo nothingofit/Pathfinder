@@ -2,19 +2,22 @@ var app = angular.module('app', ['ngRoute']);
 app.config( function ($routeProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/partials/main.html'
+      templateUrl: '/angular/homepage/main.html'
     })
     .when('/fields', {
-      templateUrl: '/partials/fields.html'
+      templateUrl: '/angular/fields_list/fields.html'
     })
     .when('/choose', {
-      templateUrl: '/partials/choose.html'
+      templateUrl: '/angular/choose_position/choose.html'
     })
     .when('/view', {
-      templateUrl: '/partials/view.html'
+      templateUrl: '/angular/view_jobs_available/view.html'
     })
     .when('/editprofile', {
-      templateUrl: '/partials/editprofile.html'
+      templateUrl: '/angular/edit_profile/editprofile.html'
+    })
+    .when('/jobprofile', {
+      templateUrl: '/angular/job_profile/jobprofile.html'
     })
     .otherwise({
       redirectTo: '/'
