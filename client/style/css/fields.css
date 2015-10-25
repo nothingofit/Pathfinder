@@ -1,0 +1,21 @@
+#fields-navbar {
+    padding: 20px;
+}
+    #fields-navbar ul{
+        text-align: right;
+        list-style-type: none;
+    }
+    #fields-navbar li {
+        display: inline-block;
+    }
+#field-options {
+    margin-top: 10%;
+}
+
+.state-icon {
+    left: -5px;
+}
+.list-group-item-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(66, 139, 202);
+}
