@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
 
-mongoose.connect('mongodb://localhost/chooseToLearn');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/chooseToLearn');
 
 var modelsPath = __dirname + '/../server/models';
 

@@ -19,5 +19,5 @@ require('./config/routes.js')(app);
 // static content
 app.use(express.static(path.join(__dirname, "./client")));
 // setting up ejs and our views folder
-
-var server = app.listen(8000);
+var port = process.env.PORT || 8000;
+var server = app.listen(port);
