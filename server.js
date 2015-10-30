@@ -20,4 +20,4 @@ require('./config/routes.js')(app);
 app.use(express.static(path.join(__dirname, "./client")));
 // setting up ejs and our views folder
 
-var server = app.listen(8000);
+var server = app.listen(2000);
