@@ -14,10 +14,14 @@ app.use(bodyParser.json());
 
 
 // require('./config/mongoose.js'); //this always comes before routes!
+require('./config/mongoose.js');
 require('./config/routes.js')(app);
+
 
 // static content
 app.use(express.static(path.join(__dirname, "./client")));
 // setting up ejs and our views folder
 
-var server = app.listen(2000);
+var server = app.listen(2000, function(){
+  console.log("Listening on port 2000.");
+});

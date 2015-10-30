@@ -59,8 +59,9 @@ app.config( function ($routeProvider) {
         templateUrl: '/angular/companyLogin/companyLogin.html',
         controller: 'companyLoginController'
     })
-    .when('/loginSuccess', {
-      templateUrl: '/partials/success.html'
+    .when('/admin', {
+      templateUrl: '/angular/admin_page/admin_page.html',
+      controller: 'adminController'
     })
     .otherwise({
       redirectTo: '/'
