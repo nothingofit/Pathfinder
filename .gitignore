@@ -1,2 +1,4 @@
 node_modules/*
 config/mongoose.js
+pathfinder.sublime-workspace
+pathfinder.sublime-project
