@@ -22,6 +22,8 @@ require('./config/routes.js')(app);
 app.use(express.static(path.join(__dirname, "./client")));
 // setting up ejs and our views folder
 
-var server = app.listen(2000, function(){
-  console.log("Listening on port 2000.");
+var port = process.env.PORT || 2000;
+var server = app.listen(port, function(){
+  console.log("Listening on port 2000.")
 });
+
