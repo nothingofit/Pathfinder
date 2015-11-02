@@ -13,6 +13,13 @@ module.exports = (function(){
           console.log("Field added.");
         }
       });
+    },
+
+    getAllFields(req,res){
+      Field.find({}, function(err, results){
+        // console.log("Found fields: " + results);
+        res.json(results);
+      });
     }
   }
 })();

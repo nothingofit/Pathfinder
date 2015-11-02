@@ -16,6 +16,11 @@ module.exports = function(app) {
 
 	app.post('/fields', function(req,res){
 		Fields.addNewField(req,res);
-	})
+	});
+
+	app.get('/fields', function(req,res){
+		console.log("DING routes '/fields'");
+		Fields.getAllFields(req,res);
+	});
 
 }

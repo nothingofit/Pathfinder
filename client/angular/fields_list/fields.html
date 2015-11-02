@@ -22,6 +22,7 @@
         <div id="field-options" class="row text-center">
             <div class="col-sm-12 col-lg-3 list-group">
                 <ul class="list-group checked-list-box">
+                    <li class="list-group-item" ng-repeat="field in allFields" ng-click="addSelectedField('{{field.name}}')">{{ field.name }}</li>
                     <li ng-click="addSelectedField('Web Development')" class="list-group-item">Web Development</li>
                     <li ng-click="addSelectedField('Programming')" class="list-group-item">Programming</li>
                     <li ng-click="addSelectedField('Physics')" class="list-group-item">Physics</li>

@@ -1,4 +1,4 @@
-app.controller("fieldsListController", function($scope, $location){
+app.controller("fieldsListController", function($scope, $location, fieldsListFactory){
 
   $scope.selectedFields = [];
   $scope.shownFields = "";
@@ -27,4 +27,18 @@ app.controller("fieldsListController", function($scope, $location){
     $location.path("/careers_list/" + $scope.shownFields);
   }
 
+  fieldsListFactory.getAllFields(function(fields){
+    $scope.allFields = fields;
+  });
+
+});
+
+app.factory("fieldsListFactory", function($http){
+  return {
+    getAllFields(setFieldScope){
+      $http.get("/fields").success(function(fields){
+        setFieldScope(fields);
+      })
+    }
+  }
 })
