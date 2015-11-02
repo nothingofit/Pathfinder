@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/chooseToLearn');
+mongoose.connect('mongodb://armand:blank1@ds045704.mongolab.com:45704/pathfinder');
 
 var modelsPath = __dirname + '/../server/models';
 
