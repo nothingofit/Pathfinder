@@ -3,6 +3,8 @@ app.controller("fieldsListController", function($scope, $location, fieldsListFac
   $scope.selectedFields = [];
   $scope.shownFields = "";
 
+  $scope.allFields = [];
+
   function refreshShownFields() {
     var shownFieldsTemp = "";
     for(var i = 0; i < $scope.selectedFields.length; i++) {
@@ -13,9 +15,14 @@ app.controller("fieldsListController", function($scope, $location, fieldsListFac
 
   $scope.addSelectedField = function(field){
 
-    var indexOfField = $scope.selectedFields.indexOf(field);
+    field.selected = field.selected == "" ? "list-group-item-primary" : "";
+
+    // console.log("selected: " + field.selected);
+
+    var indexOfField = $scope.selectedFields.indexOf(field.name);
+
     if(indexOfField === -1){
-      $scope.selectedFields.push(field);  
+      $scope.selectedFields.push(field.name);
     } else {
       $scope.selectedFields.splice(indexOfField, 1);
     }
@@ -28,7 +35,18 @@ app.controller("fieldsListController", function($scope, $location, fieldsListFac
   }
 
   fieldsListFactory.getAllFields(function(fields){
-    $scope.allFields = fields;
+   for (var i = 0; i < fields.length; i++) {
+
+    var column = Math.floor(i/4);
+
+    fields[i].selected = "";
+
+     if(!$scope.allFields[column]){
+      $scope.allFields[column] = [];
+     }
+     $scope.allFields[column].push(fields[i]);
+   };
+   console.log($scope.allFields);
   });
 
 });

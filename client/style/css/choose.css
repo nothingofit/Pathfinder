@@ -28,3 +28,13 @@
     border: 1px solid silver;
     border-radius: 3%;
 }
+
+.selected-fields-list {
+    height: 70px;
+}
+
+.selected-field-list-item {
+    display: inline-block;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
