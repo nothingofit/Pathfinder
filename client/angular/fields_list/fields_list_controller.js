@@ -15,9 +15,12 @@ app.controller("fieldsListController", function($scope, $location, fieldsListFac
 
   $scope.addSelectedField = function(field){
 
-    field.selected = field.selected == "" ? "list-group-item-primary" : "";
+    // No response if disabled.
+    if(field.disabled === "disabled") {
+      return false;
+    }
 
-    // console.log("selected: " + field.selected);
+    field.selected = field.selected == "" ? "list-group-item-primary" : "";
 
     var indexOfField = $scope.selectedFields.indexOf(field.name);
 
@@ -41,10 +44,16 @@ app.controller("fieldsListController", function($scope, $location, fieldsListFac
 
     fields[i].selected = "";
 
-     if(!$scope.allFields[column]){
-      $scope.allFields[column] = [];
-     }
-     $scope.allFields[column].push(fields[i]);
+    // Sets disabled class if disabled.
+    
+    if(fields[i].disabled === true){
+      fields[i].disabled = "disabled";
+    }
+
+    if(!$scope.allFields[column]){
+    $scope.allFields[column] = [];
+    }
+    $scope.allFields[column].push(fields[i]);
    };
    console.log($scope.allFields);
   });

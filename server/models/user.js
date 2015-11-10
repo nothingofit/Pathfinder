@@ -6,4 +6,4 @@ var userSchema = new mongoose.Schema({
 	created_at: {type: Date, default: new Date}
 });
 
-mongoose.model('Users', userSchema);
+mongoose.model('User', userSchema);

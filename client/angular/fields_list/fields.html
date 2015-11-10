@@ -12,7 +12,6 @@
         <div class="col-sm-12 col-lg-12 text-center">
             <h1>Select Your Field(s)</h1>
             <br>
-            <!-- <div ng-bind="shownFields"></div> -->
             <div class="selected-fields-list">
                 <h4>Selected Fields:</h4>
                 <ul>
@@ -24,22 +23,9 @@
         <div id="field-options" class="row text-center">
             <div class="col-sm-12 col-lg-3 list-group" ng-repeat="fieldGroup in allFields" >
                 <ul class="list-group checked-list-box">
-                    <li ng-class="'list-group-item ' + field.selected" ng-repeat="field in fieldGroup" ng-click="addSelectedField(field)"><span></span>{{ field.name }}</li>
-                    <!-- <li ng-click="addSelectedField('Web Development')" class="list-group-item">Web Development</li>
-                    <li ng-click="addSelectedField('Programming')" class="list-group-item">Programming</li>
-                    <li ng-click="addSelectedField('Physics')" class="list-group-item">Physics</li>
-                    <li ng-click="addSelectedField('Engineering')" class="list-group-item">Engineering</li> -->
+                    <li ng-class="'list-group-item ' + field.selected + ' ' + field.disabled" ng-repeat="field in fieldGroup" ng-click="addSelectedField(field)"><span></span>{{ field.name }}</li>
                 </ul>
             </div>
-<!--             <div class="col-sm-12 col-lg-3 list-group">
-                <ul class="list-group checked-list-box">
-                    <li ng-click="addSelectedField('Health Services')" class="list-group-item">Health Services</li>
-                    <li ng-click="addSelectedField('Medical Technical')" class="list-group-item">Medical Technology</li>
-                    <li ng-click="addSelectedField('Accounting')" class="list-group-item">Accounting</li>
-                    <li ng-click="addSelectedField('Business Management')" class="list-group-item">Business Management</li>
-                </ul>
-            </div> -->
-            
         </div>
         <div class="col-lg-12 text-center">
             <button ng-click="submitFields()" class="btn btn-warning">Submit</button>

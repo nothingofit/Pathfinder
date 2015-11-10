@@ -7,6 +7,52 @@
     </form>
   </div>
 
+  <div class="add-skill">
+    <h2>Add a Skill</h2>
+    <form ng-submit="submitNewSkill()">
+      <input type="text" ng-model="newSkill.name">
+      <button class="btn btn-danger">Submit New Skill</button>
+    </form>
+  </div>
+
+  <div class="add-career">
+    <h2>Add a Career</h2>
+    <form ng-submit="submitNewCareer()">
+      <div class="row">
+        <p class="col-md-1 col-sm-1 col-lg-1 col-xs-1">Title: </p> 
+        <div class="col-md-11 col-sm-11 col-lg-11 col-xs-11">
+          <input type="text" ng-model="newCareer.title">
+        </div>
+      </div>
+      <div class="row">
+        <p class="col-md-1 col-sm-1 col-lg-1 col-xs-1">Field: </p>
+        <div class="field-options col-md-11 col-sm-11 col-lg-11 col-xs-11">
+          <label ng-repeat="field in allFields">
+            <input
+              type="checkbox"
+              name="selectedFields[]"
+              value="{{field.name}}"
+              ng-checked="newCareer.fields.indexOf(field.name) > -1"
+              ng-click="toggleFieldSelection(field.name)">
+              {{field.name}}
+          </label>
+        </div>
+
+        <!-- <select ng-model="newCareer.field" ng-options="field.name as field.name for field in allFields"></select> -->
+      </div>
+      <div class="row">
+        <p class="col-md-1 col-sm-1 col-lg-1 col-xs-1">Skills: </p>
+        <div class="col-md-11 col-sm-11 col-lg-11 col-xs-11">
+          <select ng-model="newCareer.skills[0]" ng-options="skill.name as skill.name for skill in allSkills"></select>
+          <select ng-model="newCareer.skills[1]" ng-options="skill.name as skill.name for skill in allSkills"></select>
+          <select ng-model="newCareer.skills[2]" ng-options="skill.name as skill.name for skill in allSkills"></select>
+          <select ng-model="newCareer.skills[3]" ng-options="skill.name as skill.name for skill in allSkills"></select>
+        </div>
+      </div>
+      <button class="btn btn-danger">Submit New Career</button>
+    </form>
+  </div>
+
 
 
 
